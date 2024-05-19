@@ -26,6 +26,7 @@ const userSchema = new mongoose.Schema({
     role: {
         type: String,
         required: [true, "A user must have a role"],
+        default: 1,
         trim: true,
     }
 });

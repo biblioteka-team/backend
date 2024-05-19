@@ -1,0 +1,51 @@
+
+[
+    {
+        "name": "F. Scott",
+        "surname": "Fitzgerald",
+        "name_ukr": "Ф. Скотт",
+        "surname_ukr": "Фіцджеральд"
+    },
+    {
+        "name": "George",
+        "surname": "Orwell",
+        "name_ukr": "Джордж",
+        "surname_ukr": "Оруелл"
+    },
+    {
+        "name": "Harper",
+        "surname": "Lee",
+        "name_ukr": "Гарпер",
+        "surname_ukr": "Лі"
+    },
+    {
+        "name": "Jane",
+        "surname": "Austen",
+        "name_ukr": "Джейн",
+        "surname_ukr": "Остін"
+    },
+    {
+        "name": "J.D.",
+        "surname": "Salinger",
+        "name_ukr": "Дж.Д.",
+        "surname_ukr": "Селінджер"
+    },
+    {
+        "name": "J.R.R.",
+        "surname": "Tolkien",
+        "name_ukr": "Дж.Р.Р.",
+        "surname_ukr": "Толкін"
+    },
+    {
+        "name": "Ray",
+        "surname": "Bradbury",
+        "name_ukr": "Рей",
+        "surname_ukr": "Бредбері"
+    },
+    {
+        "name": "Herman",
+        "surname": "Melville",
+        "name_ukr": "Герман",
+        "surname_ukr": "Мелвілл"
+    }
+]

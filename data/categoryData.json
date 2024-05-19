@@ -1,0 +1,25 @@
+
+[
+    {
+        "category": "Classic",
+        "category_ukr": "Класика"
+    },
+    {
+        "category": "Dystopian",
+        "category_ukr": "Дистопія"
+    },
+    {
+        "category": "Romance",
+        "category_ukr": "Роман"
+    },
+    {
+        "category": "Fantasy",
+        "category_ukr": "Фентезі"
+    },
+    {
+        "category": "Adventure",
+        "category_ukr": "Пригоди"
+    }
+]
+
+

@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-
+const { Schema, model } = mongoose;
 
 const bookSchema = new mongoose.Schema({
     title: {
@@ -8,22 +8,22 @@ const bookSchema = new mongoose.Schema({
         unique: true,
         trim: true,
     },
-    author_id: {
-        type: [Schema.Types.ObjectId],
+    author_id: [{
+        type: Schema.Types.ObjectId,
         ref: "Author",
-        required: [true, "A book must have an author"],
-    },
-    publisher: {
-        type: [Schema.Types.ObjectId],
+        required: [true, "A book must have an author"]
+    }], 
+    publisher_id: [{
+        type: Schema.Types.ObjectId,
         ref: "Publisher",
         required: [true, "A book must have a publisher"],
-    }, 
-    pages: Number,
-    language: {
-        type: [Schema.Types.ObjectId],
+    }], 
+    pagesQty: Number,
+    language_id: [{
+        type: Schema.Types.ObjectId,
         ref: "Language",
-        required: [true, "Language must be added"],
-    },
+        required: [true, "A book must have a publisher"],
+    }],
     summary: {
         type: String,
         required: [true, "A book must have a summary"],
@@ -32,18 +32,23 @@ const bookSchema = new mongoose.Schema({
     },
     coverImageLink: String,
     isbn: String,
-    category: {
-        type: [Schema.Types.ObjectId],
+    category_id: [{
+        type: Schema.Types.ObjectId,
         ref: "Category",
         required: [true, "A book must have a category"],
-    },
+    }],
     publication_year: String,
     type: String,
     condition: String,
     title_ukr: String,
     summary_ukr: String,
-    coverImageLink_ukr: String
-});
+    coverImageLink_ukr: String,
+    created: { 
+        type: Date,
+        default: Date.now
+      }
+    
+}); 
 
 const Book = mongoose.model("Book", bookSchema);
 module.exports = Book;
