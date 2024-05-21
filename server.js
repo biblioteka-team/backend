@@ -9,7 +9,7 @@ const importCategoryData = data.importCategoryData;
 const importPublisherData = data.importPublisherData;
 const importLanguageData = data.importLanguageData;
 const importBooksData =  data.importBooksData;
-
+const updateBooksData = data.updateBooksData;
 
 const DB = process.env.DATABASE.replace(
     "<PASSWORD>",
@@ -21,7 +21,7 @@ mongoose.connect(DB).then(() => {
     console.log("DB connected");
 })
 
-const port = 3000;
+const port = 8000;
 
 app.listen(port, () => {
     console.log("app running")
@@ -33,4 +33,5 @@ app.listen(port, () => {
 // importLanguageData();
 // importCategoryData();
 // importAuthorsData();
-importBooksData();
+// importBooksData();
+// updateBooksData();
