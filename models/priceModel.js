@@ -1,4 +1,6 @@
 const mongoose = require("mongoose");
+const { Schema } = mongoose;
+// const Double = require("@mongoosejs/double");
 
 const priceSchema = new mongoose.Schema({
     book_id: {

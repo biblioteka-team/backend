@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const { Schema, model } = mongoose;
+const { Schema } = mongoose;
 
 const bookSchema = new mongoose.Schema({
     title: {
@@ -46,7 +46,12 @@ const bookSchema = new mongoose.Schema({
     created: { 
         type: Date,
         default: Date.now
-      }
+      },
+    price_id: {
+        type: Schema.Types.ObjectId,
+        ref: "Price",
+        required: [true, "A book must have a price"],
+    }
     
 }); 
 

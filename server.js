@@ -9,6 +9,7 @@ const importCategoryData = data.importCategoryData;
 const importPublisherData = data.importPublisherData;
 const importLanguageData = data.importLanguageData;
 const importBooksData =  data.importBooksData;
+const importPriceData = data.importPriceData;
 const updateBooksData = data.updateBooksData;
 
 const DB = process.env.DATABASE.replace(
@@ -34,4 +35,5 @@ app.listen(port, () => {
 // importCategoryData();
 // importAuthorsData();
 // importBooksData();
+// importPriceData();
 // updateBooksData();

@@ -12,7 +12,7 @@ db.category = require("./categoryModel");
 db.language = require("./languageModel");
 // db.order = require("./orderModel");
 // db.payment = require("./paymentModel");
-// db.price = require("./priceModel");
+db.price = require("./priceModel");
 db.publisher = require("./publisherModel");
 // db.user = require("./userModel");
 

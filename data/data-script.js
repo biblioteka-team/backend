@@ -17,7 +17,7 @@ mongoose.connect(DB, {
     console.log("DB connection");
 });
 
-const {author, category, publisher, language, book } = dataBase;
+const {author, category, publisher, language, book, price } = dataBase;
 
 const authors = JSON.parse(
     fs.readFileSync(`${__dirname}/authorData.json`, "utf-8")
@@ -36,6 +36,10 @@ const publishers =  JSON.parse(
 
 const books = JSON.parse(
     fs.readFileSync(`${__dirname}/bookData.json`, "utf-8")
+);
+
+const prices = JSON.parse(
+    fs.readFileSync(`${__dirname}/priceData.json`, "utf-8")
 );
 
 const importAuthorsData = async() => {
@@ -83,6 +87,15 @@ const importBooksData = async() => {
     }
 };
 
+const importPriceData = async() => {
+    try {
+        await price.create(prices);
+        console.log("Prices loaded");
+    } catch(err) {
+        console.log(err);
+    }
+};
+
 const updateBooksData = async() => {
     try {
         await book.insertMany(books);
@@ -92,4 +105,4 @@ const updateBooksData = async() => {
     }
 }
 
- module.exports = { importCategoryData, importAuthorsData, importPublisherData, importLanguageData, importBooksData, updateBooksData};
+ module.exports = { importCategoryData, importAuthorsData, importPublisherData, importLanguageData, importBooksData, importPriceData, updateBooksData};
