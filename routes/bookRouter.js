@@ -5,7 +5,7 @@ const router = express.Router();
 app.use(router);
 router
    .route("/")
-   .get(bookController.getNewBooks);
+   .get(bookController.getNewAndSalesAndBestsellerBooks);
 
 
    module.exports = router;
