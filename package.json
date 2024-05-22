@@ -9,8 +9,7 @@
     "vercel": "^34.2.0"
   },
   "scripts": {
-    "start": "nodemon server.js",
-    "start:prod": "NODE_ENV=production nodemon server.js"
+    "start": "node server.js"
   },
   "name": "backend",
   "version": "1.0.0",
