@@ -1,6 +1,6 @@
-const Book = require("../models/bookModel");
-const Price = require("../models/priceModel");
-const catchAsync = require("../utils/catchAsync");
+const Book = require("../models/bookModel.js");
+const Price = require("../models/priceModel.js");
+const catchAsync = require("../utils/catchAsync.js");
 
 exports.getNewAndSalesAndBestsellerBooks = catchAsync(async (req, res, next) => {
     try {
