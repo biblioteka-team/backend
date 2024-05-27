@@ -12,6 +12,8 @@ const importBooksData =  data.importBooksData;
 const importPriceData = data.importPriceData;
 const updateBooksData = data.updateBooksData;
 
+const uploadImageToVercelBlob = require("./utils/uploadImages.js")
+
 const DB = process.env.DATABASE.replace(
     "<PASSWORD>",
     process.env.PASSWORD
@@ -28,7 +30,13 @@ app.listen(port, () => {
     console.log("app running")
 });
 
-
+// Usage example:
+// const imagePath = './assets/the_hobbit.jpg'; // Replace with your image path
+// uploadImageToVercelBlob(imagePath).then(response => {
+//   console.log('Uploaded image response:', response);
+// }).catch(error => {
+//   console.error('Upload failed:', error);
+// });
 
 // importPublisherData();
 // importLanguageData();
