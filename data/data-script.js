@@ -26,8 +26,6 @@ mongoose.connect(DB, {
     console.log("DB connection");
 });
 
-// import {author, category, publisher, language, book, price } from "";
-
 const authors = JSON.parse(
     fs.readFileSync(`${__dirname}/authorData.json`, "utf-8")
 );

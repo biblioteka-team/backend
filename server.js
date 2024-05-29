@@ -8,13 +8,6 @@ dotenv.config({path: "./.env"});
 
 
 import importData from "./data/data-script.js";
-//  importAuthorsData from "./data/data-script.js";
-// import importCategoryData from "./data/data-script.js";
-// import importPublisherData from "./data/data-script.js";
-// import importLanguageData from "./data/data-script.js"; 
-// import importBooksData from "./data/data-script.js";
-// import importPriceData from "./data/data-script.js";
-// import updateData from "./data/data-script.js";
 
 // const uploadImageHandler = require("./utils/uploadImagesHandler.js")
 
@@ -38,38 +31,10 @@ mongoose.connect(DB).then(() => {
 
 const port = 8000;
 
-// Promise.all([
-//     import('adminjs'),
-//     import('@adminjs/express'),
-// ]).then(([{default: AdminJS}, {default: AdminJSExpress}]) => {
-//         const admin = new AdminJS({
-//                 databases: [], // We don’t have any resources connected yet.
-//                 rootPath: "/admin", 
-//             });
+app.listen(port, () => {
+    console.log("app running")
+});
 
-//         const router = AdminJSExpress.buildRouter(admin);
-//         app.use(admin.options.rootPath, router);
-//         app.listen(port, () => {
-//             console.log("app running")
-//         });
-//         });
-            // const router = AdminJSExpress.buildRouter(admin);
-            // app.use(admin.options.rootPath, router);
-
-        app.listen(port, () => {
-            console.log("app running")
-        });
-        // const port = 8000;
-
-// app.listen(port, () => {
-//     console.log("app running")
-// });
-// });
-// const port = 8000;
-
-// app.listen(port, () => {
-//     console.log("app running")
-// });
 
 // const storage = multer.memoryStorage();
 // const upload = multer({ storage: storage });
@@ -84,10 +49,5 @@ const port = 8000;
 // });
 
 
-// importPublisherData();
-// importLanguageData();
-// importCategoryData();
-// importAuthorsData();
-// importBooksData();
-// importPriceData();
+
 // updateData();

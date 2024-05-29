@@ -1,5 +1,7 @@
 import express from "express";
 import morgan  from "morgan";
+import AdminJS from "adminjs";
+import AdminJSExpress from "@adminjs/express";
 import handler from "./utils/uploadImagesHandler.js";
 
 import router from "./routes/bookRouter.js";
@@ -10,6 +12,15 @@ const app = express();
 if (process.env.NODE_ENV === "development") {
     app.use(morgan("dev"));
 };
+
+const admin = new AdminJS({
+    databases: [], // We don’t have any resources connected yet.
+    rootPath: "/admin", 
+});
+
+const adminRouter = AdminJSExpress.buildRouter(admin);
+app.use(admin.options.rootPath, adminRouter);
+
 
 app.use(express.json());
 
