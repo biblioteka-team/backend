@@ -1,6 +1,4 @@
 import mongoose from "mongoose";
-import AdminJS from "adminjs";
-import AdminJSExpress from "@adminjs/express";
 import app  from "./app.js";
 import multer from "multer";
 import dotenv from "dotenv" ;
@@ -20,14 +18,6 @@ const DB = process.env.DATABASE.replace(
 mongoose.connect(DB).then(() => {
     console.log("DB connected");
 })
-
-// const admin = new AdminJS({
-//     databases: [], // We don’t have any resources connected yet.
-//     rootPath: "/admin", 
-// });
-
-// const router = AdminJSExpress.buildRouter(admin);
-// app.use(admin.options.rootPath, router);
 
 const port = 8000;
 

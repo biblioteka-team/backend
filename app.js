@@ -2,8 +2,20 @@ import express from "express";
 import morgan  from "morgan";
 import AdminJS from "adminjs";
 import AdminJSExpress from "@adminjs/express";
-import handler from "./utils/uploadImagesHandler.js";
+// import { Database, Resource } from "@adminjs/typeorm";
+import {  Database, Resource } from "@adminjs/mongoose";
 
+
+import Book from "./models/bookModel.js";
+import Author from "./models/authorModel.js";
+import Price from "./models/priceModel.js";
+import Publisher from "./models/publisherModel.js";
+import Category from "./models/categoryModel.js";
+import Language from "./models/languageModel.js";
+// import Address from "./models/addressModel.js";
+// import Availability from "./models/availabilityModel.js";
+
+import handler from "./utils/uploadImagesHandler.js";
 import router from "./routes/bookRouter.js";
 
 const app = express();
@@ -13,8 +25,30 @@ if (process.env.NODE_ENV === "development") {
     app.use(morgan("dev"));
 };
 
+//admin panel
+AdminJS.registerAdapter({ Database, Resource });
+
 const admin = new AdminJS({
-    databases: [], // We don’t have any resources connected yet.
+    resources: [
+        {
+            resource: Author,
+        },
+        {
+            resource: Book,
+        },
+        {
+            resource: Price,
+        },
+        {
+            resource: Publisher,
+        },
+        {
+            resource: Language,
+        },
+        {
+            resource: Category,
+        }
+    ],
     rootPath: "/admin", 
 });
 
