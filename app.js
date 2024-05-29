@@ -2,7 +2,6 @@ import express from "express";
 import morgan  from "morgan";
 import AdminJS from "adminjs";
 import AdminJSExpress from "@adminjs/express";
-// import { Database, Resource } from "@adminjs/typeorm";
 import {  Database, Resource } from "@adminjs/mongoose";
 
 
