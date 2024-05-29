@@ -1,25 +1,43 @@
 
 [
     {
-        "category": "Classic",
-        "category_ukr": "Класика"
+      "category": "classic",
+      "category_ukr": "класика"
     },
     {
-        "category": "Dystopian",
-        "category_ukr": "Дистопія"
+      "category": "modern",
+      "category_ukr": "сучасний"
     },
     {
-        "category": "Romance",
-        "category_ukr": "Роман"
+      "category": "modern classic",
+      "category_ukr": "сучасна класика"
     },
     {
-        "category": "Fantasy",
-        "category_ukr": "Фентезі"
+      "category": "dystopian",
+      "category_ukr": "антиутопія"
     },
     {
-        "category": "Adventure",
-        "category_ukr": "Пригоди"
+      "category": "romance",
+      "category_ukr": "романтика"
+    },
+    {
+      "category": "novella",
+      "category_ukr": "новела"
+    },
+    {
+      "category": "adventure",
+      "category_ukr": "пригоди"
+    },
+    {
+      "category": "short story",
+      "category_ukr": "коротка історія"
+    },
+    {
+      "category": "philosophical",
+      "category_ukr": "філософський"
+    },
+    {
+      "category": "science fiction",
+      "category_ukr": "наукова фантастика"
     }
-]
-
-
+  ]

@@ -1,51 +1,304 @@
 
-[
+ [
     {
-        "name": "F. Scott",
-        "surname": "Fitzgerald",
-        "name_ukr": "Ф. Скотт",
-        "surname_ukr": "Фіцджеральд"
+      "name": "George",
+      "surname": "Orwell",
+      "name_ukr": "Джордж",
+      "surname_ukr": "Орвелл"
     },
     {
-        "name": "George",
-        "surname": "Orwell",
-        "name_ukr": "Джордж",
-        "surname_ukr": "Оруелл"
+      "name": "Virginia",
+      "surname": "Woolf",
+      "name_ukr": "Вірджинія",
+      "surname_ukr": "Вулф"
     },
     {
-        "name": "Harper",
-        "surname": "Lee",
-        "name_ukr": "Гарпер",
-        "surname_ukr": "Лі"
+      "name": "Haruki",
+      "surname": "Murakami",
+      "name_ukr": "Харукі",
+      "surname_ukr": "Муракамі"
     },
     {
-        "name": "Jane",
-        "surname": "Austen",
-        "name_ukr": "Джейн",
-        "surname_ukr": "Остін"
+      "name": "Gabriel",
+      "surname": "García Márquez",
+      "name_ukr": "Габріель",
+      "surname_ukr": "Гарсія Маркес"
     },
     {
-        "name": "J.D.",
-        "surname": "Salinger",
-        "name_ukr": "Дж.Д.",
-        "surname_ukr": "Селінджер"
+      "name": "Jane",
+      "surname": "Austen",
+      "name_ukr": "Джейн",
+      "surname_ukr": "Остін"
     },
     {
-        "name": "J.R.R.",
-        "surname": "Tolkien",
-        "name_ukr": "Дж.Р.Р.",
-        "surname_ukr": "Толкін"
+      "name": "James",
+      "surname": "Joyce",
+      "name_ukr": "Джеймс",
+      "surname_ukr": "Джойс"
     },
     {
-        "name": "Ray",
-        "surname": "Bradbury",
-        "name_ukr": "Рей",
-        "surname_ukr": "Бредбері"
+      "name": "Franz",
+      "surname": "Kafka",
+      "name_ukr": "Франц",
+      "surname_ukr": "Кафка"
     },
     {
-        "name": "Herman",
-        "surname": "Melville",
-        "name_ukr": "Герман",
-        "surname_ukr": "Мелвілл"
+      "name": "Mark",
+      "surname": "Twain",
+      "name_ukr": "Марк",
+      "surname_ukr": "Твен"
+    },
+    {
+      "name": "Herman",
+      "surname": "Melville",
+      "name_ukr": "Герман",
+      "surname_ukr": "Мелвілл"
+    },
+    {
+      "name": "Ernest",
+      "surname": "Hemingway",
+      "name_ukr": "Ернест",
+      "surname_ukr": "Хемінгуей"
+    },
+    {
+      "name": "Toni",
+      "surname": "Morrison",
+      "name_ukr": "Тоні",
+      "surname_ukr": "Моррісон"
+    },
+    {
+      "name": "Kazuo",
+      "surname": "Ishiguro",
+      "name_ukr": "Кадзуо",
+      "surname_ukr": "Ісігуро"
+    },
+    {
+      "name": "Salman",
+      "surname": "Rushdie",
+      "name_ukr": "Салман",
+      "surname_ukr": "Рушді"
+    },
+    {
+      "name": "Margaret",
+      "surname": "Atwood",
+      "name_ukr": "Маргарет",
+      "surname_ukr": "Етвуд"
+    },
+    {
+      "name": "J.K.",
+      "surname": "Rowling",
+      "name_ukr": "Дж.К.",
+      "surname_ukr": "Роулінг"
+    },
+    {
+      "name": "Chinua",
+      "surname": "Achebe",
+      "name_ukr": "Чинуа",
+      "surname_ukr": "Ачебе"
+    },
+    {
+      "name": "Herman",
+      "surname": "Hesse",
+      "name_ukr": "Герман",
+      "surname_ukr": "Гессе"
+    },
+    {
+      "name": "F. Scott",
+      "surname": "Fitzgerald",
+      "name_ukr": "Френсіс Скотт",
+      "surname_ukr": "Фіцджеральд"
+    },
+    {
+      "name": "Harper",
+      "surname": "Lee",
+      "name_ukr": "Гарпер",
+      "surname_ukr": "Лі"
+    },
+    {
+      "name": "J.R.R.",
+      "surname": "Tolkien",
+      "name_ukr": "Дж.Р.Р.",
+      "surname_ukr": "Толкін"
+    },
+    {
+      "name": "J.D.",
+      "surname": "Salinger",
+      "name_ukr": "Дж.Д.",
+      "surname_ukr": "Селінджер"
+    },
+    {
+      "name": "Isaac",
+      "surname": "Asimov",
+      "name_ukr": "Айзек",
+      "surname_ukr": "Азімов"
+    },
+    {
+      "name": "Stephen",
+      "surname": "King",
+      "name_ukr": "Стівен",
+      "surname_ukr": "Кінг"
+    },
+    {
+      "name": "Neil",
+      "surname": "Gaiman",
+      "name_ukr": "Ніл",
+      "surname_ukr": "Гейман"
+    },
+    {
+      "name": "Alice",
+      "surname": "Walker",
+      "name_ukr": "Еліс",
+      "surname_ukr": "Вокер"
+    },
+    {
+      "name": "Kurt",
+      "surname": "Vonnegut",
+      "name_ukr": "Курт",
+      "surname_ukr": "Воннегут"
+    },
+    {
+      "name": "Sylvia",
+      "surname": "Plath",
+      "name_ukr": "Сильвія",
+      "surname_ukr": "Плат"
+    },
+    {
+      "name": "Ray",
+      "surname": "Bradbury",
+      "name_ukr": "Рей",
+      "surname_ukr": "Бредбері"
+    },
+    {
+      "name": "William",
+      "surname": "Faulkner",
+      "name_ukr": "Вільям",
+      "surname_ukr": "Фолкнер"
+    },
+    {
+      "name": "Maya",
+      "surname": "Angelou",
+      "name_ukr": "Майя",
+      "surname_ukr": "Анджелоу"
+    },
+    {
+      "name": "Philip",
+      "surname": "K. Dick",
+      "name_ukr": "Філіп",
+      "surname_ukr": "К. Дік"
+    },
+    {
+      "name": "John",
+      "surname": "Steinbeck",
+      "name_ukr": "Джон",
+      "surname_ukr": "Стейнбек"
+    },
+    {
+      "name": "Agatha",
+      "surname": "Christie",
+      "name_ukr": "Агата",
+      "surname_ukr": "Крісті"
+    },
+    {
+      "name": "C.S.",
+      "surname": "Lewis",
+      "name_ukr": "К.С.",
+      "surname_ukr": "Льюїс"
+    },
+    {
+      "name": "John",
+      "surname": "Grisham",
+      "name_ukr": "Джон",
+      "surname_ukr": "Грішем"
+    },
+    {
+      "name": "Dan",
+      "surname": "Brown",
+      "name_ukr": "Ден",
+      "surname_ukr": "Браун"
+    },
+    {
+      "name": "Paulo",
+      "surname": "Coelho",
+      "name_ukr": "Пауло",
+      "surname_ukr": "Коельйо"
+    },
+    {
+      "name": "Orhan",
+      "surname": "Pamuk",
+      "name_ukr": "Орхан",
+      "surname_ukr": "Памук"
+    },
+    {
+      "name": "Milan",
+      "surname": "Kundera",
+      "name_ukr": "Мілан",
+      "surname_ukr": "Кундера"
+    },
+    {
+      "name": "John",
+      "surname": "Green",
+      "name_ukr": "Джон",
+      "surname_ukr": "Грін"
+    },
+    {
+      "name": "Donna",
+      "surname": "Tartt",
+      "name_ukr": "Донна",
+      "surname_ukr": "Тартт"
+    },
+    {
+      "name": "Joan",
+      "surname": "Didion",
+      "name_ukr": "Джоан",
+      "surname_ukr": "Дідіон"
+    },
+    {
+      "name": "Jhumpa",
+      "surname": "Lahiri",
+      "name_ukr": "Джумпа",
+      "surname_ukr": "Лахірі"
+    },
+    {
+      "name": "Michael",
+      "surname": "Ondaatje",
+      "name_ukr": "Майкл",
+      "surname_ukr": "Ондатже"
+    },
+    {
+      "name": "Arundhati",
+      "surname": "Roy",
+      "name_ukr": "Арундаті",
+      "surname_ukr": "Рой"
+    },
+    {
+      "name": "Elena",
+      "surname": "Ferrante",
+      "name_ukr": "Елена",
+      "surname_ukr": "Ферранте"
+    },
+    {
+      "name": "Margaret",
+      "surname": "Mitchell",
+      "name_ukr": "Маргарет",
+      "surname_ukr": "Мітчелл"
+    },
+    {
+      "name": "Hanya",
+      "surname": "Yanagihara",
+      "name_ukr": "Ханя",
+      "surname_ukr": "Янагіхара"
+    },
+    {
+      "name": "J.D.",
+      "surname": "Vance",
+      "name_ukr": "Дж.Д.",
+      "surname_ukr": "Венс"
+    },
+    {
+      "name": "Sally",
+      "surname": "Rooney",
+      "name_ukr": "Саллі",
+      "surname_ukr": "Руні"
     }
-]
+  ]
+  

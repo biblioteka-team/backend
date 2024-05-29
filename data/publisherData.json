@@ -1,29 +1,109 @@
 
 [
     {
-        "Publisher": "Charles Scribner's Sons"
+      "publisher": "Penguin Random House"
     },
     {
-        "Publisher": "Secker & Warburg"
+      "publisher": "HarperCollins"
     },
     {
-        "Publisher": "J.B. Lippincott & Co."
+      "publisher": "Simon & Schuster"
     },
     {
-        "Publisher": "T. Egerton"
+      "publisher": "Hachette Livre"
     },
     {
-        "Publisher": "Little, Brown and Company"
+      "publisher": "Macmillan Publishers"
     },
     {
-        "Publisher": "George Allen & Unwin"
+      "publisher": "Bloomsbury"
     },
     {
-        "Publisher": "Ballantine Books"
+      "publisher": "Scholastic"
     },
     {
-        "Publisher": "Harper & Brothers"
+      "publisher": "Pan Macmillan"
+    },
+    {
+      "publisher": "Vintage Books"
+    },
+    {
+      "publisher": "Little, Brown and Company"
+    },
+    {
+      "publisher": "Knopf Doubleday Publishing Group"
+    },
+    {
+      "publisher": "Random House"
+    },
+    {
+      "publisher": "Faber & Faber"
+    },
+    {
+      "publisher": "W.W. Norton & Company"
+    },
+    {
+      "publisher": "Crown Publishing Group"
+    },
+    {
+      "publisher": "Grove Press"
+    },
+    {
+      "publisher": "Anchor Books"
+    },
+    {
+      "publisher": "Scribner"
+    },
+    {
+      "publisher": "Ecco Press"
+    },
+    {
+      "publisher": "Harvill Secker"
+    },
+    {
+      "publisher": "Doubleday"
+    },
+    {
+      "publisher": "Grand Central Publishing"
+    },
+    {
+      "publisher": "Ballantine Books"
+    },
+    {
+      "publisher": "Hogarth Press"
+    },
+    {
+      "publisher": "Orion Publishing Group"
+    },
+    {
+      "publisher": "Tor Books"
+    },
+    {
+      "publisher": "G.P. Putnam's Sons"
+    },
+    {
+      "publisher": "Avon Books"
+    },
+    {
+      "publisher": "Picador"
+    },
+    {
+      "publisher": "Riverhead Books"
+    },
+    {
+      "publisher": "Houghton Mifflin Harcourt"
+    },
+    {
+      "publisher": "Puffin Books"
+    },
+    {
+      "publisher": "Del Rey Books"
+    },
+    {
+      "publisher": "Mariner Books"
+    },
+    {
+      "publisher": "Viking Press"
     }
-]
-
-
+  ]
+  

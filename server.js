@@ -1,18 +1,22 @@
-const mongoose = require("mongoose");
-const app = require("./app.js");
-const dotenv = require("dotenv");
+import mongoose from "mongoose";
+import AdminJS from "adminjs";
+import AdminJSExpress from "@adminjs/express";
+import app  from "./app.js";
+import multer from "multer";
+import dotenv from "dotenv" ;
 dotenv.config({path: "./.env"});
 
-const data = require("./data/data-script.js");
-const importAuthorsData = data.importAuthorsData;
-const importCategoryData = data.importCategoryData;
-const importPublisherData = data.importPublisherData;
-const importLanguageData = data.importLanguageData;
-const importBooksData =  data.importBooksData;
-const importPriceData = data.importPriceData;
-const updateBooksData = data.updateBooksData;
 
-const uploadImageToVercelBlob = require("./utils/uploadImages.js")
+import importData from "./data/data-script.js";
+//  importAuthorsData from "./data/data-script.js";
+// import importCategoryData from "./data/data-script.js";
+// import importPublisherData from "./data/data-script.js";
+// import importLanguageData from "./data/data-script.js"; 
+// import importBooksData from "./data/data-script.js";
+// import importPriceData from "./data/data-script.js";
+// import updateData from "./data/data-script.js";
+
+// const uploadImageHandler = require("./utils/uploadImagesHandler.js")
 
 const DB = process.env.DATABASE.replace(
     "<PASSWORD>",
@@ -24,19 +28,61 @@ mongoose.connect(DB).then(() => {
     console.log("DB connected");
 })
 
+// const admin = new AdminJS({
+//     databases: [], // We don’t have any resources connected yet.
+//     rootPath: "/admin", 
+// });
+
+// const router = AdminJSExpress.buildRouter(admin);
+// app.use(admin.options.rootPath, router);
+
 const port = 8000;
 
-app.listen(port, () => {
-    console.log("app running")
-});
+// Promise.all([
+//     import('adminjs'),
+//     import('@adminjs/express'),
+// ]).then(([{default: AdminJS}, {default: AdminJSExpress}]) => {
+//         const admin = new AdminJS({
+//                 databases: [], // We don’t have any resources connected yet.
+//                 rootPath: "/admin", 
+//             });
 
+//         const router = AdminJSExpress.buildRouter(admin);
+//         app.use(admin.options.rootPath, router);
+//         app.listen(port, () => {
+//             console.log("app running")
+//         });
+//         });
+            // const router = AdminJSExpress.buildRouter(admin);
+            // app.use(admin.options.rootPath, router);
+
+        app.listen(port, () => {
+            console.log("app running")
+        });
+        // const port = 8000;
+
+// app.listen(port, () => {
+//     console.log("app running")
+// });
+// });
+// const port = 8000;
+
+// app.listen(port, () => {
+//     console.log("app running")
+// });
+
+// const storage = multer.memoryStorage();
+// const upload = multer({ storage: storage });
+
+// app.post('/upload', upload.single('image'), uploadImageHandler);
 // Usage example:
-// const imagePath = './assets/the_hobbit.jpg'; // Replace with your image path
+// const imagePath = './assets/ulysses.jpg'; // Replace with your image path
 // uploadImageToVercelBlob(imagePath).then(response => {
 //   console.log('Uploaded image response:', response);
 // }).catch(error => {
 //   console.error('Upload failed:', error);
 // });
+
 
 // importPublisherData();
 // importLanguageData();
@@ -44,4 +90,4 @@ app.listen(port, () => {
 // importAuthorsData();
 // importBooksData();
 // importPriceData();
-// updateBooksData();
+// updateData();

@@ -1,8 +1,8 @@
-const express = require("express");
-const morgan = require("morgan");
-const handler = require("./utils/uploadImages");
+import express from "express";
+import morgan  from "morgan";
+import handler from "./utils/uploadImagesHandler.js";
 
-const bookRouter = require("./routes/bookRouter");
+import router from "./routes/bookRouter.js";
 
 const app = express();
 
@@ -13,7 +13,7 @@ if (process.env.NODE_ENV === "development") {
 
 app.use(express.json());
 
-app.get("/", bookRouter);
+app.get("/", router);
 app.use(function(req, res, next) {
     res.status(404).send("Sorry, that route doesn't exist. Have a nice day :)");
 });
@@ -21,7 +21,7 @@ app.use(function(req, res, next) {
 app.post('/upload', async (_req) => {
     const request = _req;
     await handler(request);
-  })
+})
 
 
-module.exports = app; 
+export default app; 

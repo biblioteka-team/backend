@@ -1,8 +1,8 @@
-const Book = require("../models/bookModel");
-const Price = require("../models/priceModel");
-const catchAsync = require("../utils/catchAsync");
+import Book from "../models/bookModel.js";
+import Price from "../models/priceModel.js";
+import {catchAsync} from "../utils/catchAsync.js";
 
-exports.getNewAndSalesAndBestsellerBooks = catchAsync(async (req, res, next) => {
+const getNewAndSalesAndBestsellerBooks = catchAsync(async (req, res, next) => {
     try {
     const [newBooks, salesBooks, bestsellerBooks] = await Promise.all([
         //get new books by date
@@ -18,7 +18,8 @@ exports.getNewAndSalesAndBestsellerBooks = catchAsync(async (req, res, next) => 
                 { path: "category_id"}
             ]
         }),
-
+       
+        //get random bestsellers
         Book.find().limit(4).populate("price_id").populate("author_id")
         .populate("publisher_id").populate("language_id").populate("category_id"),
      ]);
@@ -33,3 +34,5 @@ exports.getNewAndSalesAndBestsellerBooks = catchAsync(async (req, res, next) => 
     }
 
 });
+
+export default getNewAndSalesAndBestsellerBooks;

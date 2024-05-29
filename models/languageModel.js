@@ -1,8 +1,8 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const languageSchema = new mongoose.Schema({
     language: String
 });
 
 const Language = mongoose.model("Language", languageSchema);
-module.exports = Language;
+export default Language;

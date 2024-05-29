@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 const { Schema } = mongoose;
 // const Double = require("@mongoosejs/double");
 
@@ -13,4 +13,4 @@ const priceSchema = new mongoose.Schema({
 });
 
 const Price = mongoose.model("Price", priceSchema);
-module.exports = Price;
+export default Price;

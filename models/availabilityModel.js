@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const availabilitySchema = new mongoose.Schema({
     book_id: {
@@ -9,4 +9,4 @@ const availabilitySchema = new mongoose.Schema({
 });
 
 const Availability = mongoose.model("Availability", availabilitySchema);
-module.exports = Availability;
+export default Availability;
