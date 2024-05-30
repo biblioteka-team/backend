@@ -1,8 +1,8 @@
 import express from "express";
 import morgan  from "morgan";
-// import AdminJS from "adminjs";
-// import AdminJSExpress from "@adminjs/express";
-// import {  Database, Resource } from "@adminjs/mongoose";
+import AdminJS from "adminjs";
+import AdminJSExpress from "@adminjs/express";
+import {  Database, Resource } from "@adminjs/mongoose";
 
 
 import Book from "./models/bookModel.js";
@@ -25,34 +25,34 @@ if (process.env.NODE_ENV === "development") {
 };
 
 //admin panel
-// AdminJS.registerAdapter({ Database, Resource });
+AdminJS.registerAdapter({ Database, Resource });
 
-// const admin = new AdminJS({
-//     resources: [
-//         {
-//             resource: Author,
-//         },
-//         {
-//             resource: Book,
-//         },
-//         {
-//             resource: Price,
-//         },
-//         {
-//             resource: Publisher,
-//         },
-//         {
-//             resource: Language,
-//         },
-//         {
-//             resource: Category,
-//         }
-//     ],
-//     rootPath: "/admin", 
-// });
+const admin = new AdminJS({
+    resources: [
+        {
+            resource: Author,
+        },
+        {
+            resource: Book,
+        },
+        {
+            resource: Price,
+        },
+        {
+            resource: Publisher,
+        },
+        {
+            resource: Language,
+        },
+        {
+            resource: Category,
+        }
+    ],
+    rootPath: "/admin", 
+});
 
-// const adminRouter = AdminJSExpress.buildRouter(admin);
-// app.use(admin.options.rootPath, adminRouter);
+const adminRouter = AdminJSExpress.buildRouter(admin);
+app.use(admin.options.rootPath, adminRouter);
 
 //test
 app.use(express.json());
