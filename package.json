@@ -18,9 +18,6 @@
     "path": "^0.12.7",
     "vercel": "^34.2.3"
   },
-  "overrides": {
-    "rollup": "npm:@rollup/wasm-node"
-  },
   "scripts": {
     "start": "node server.js"
   },
