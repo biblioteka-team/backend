@@ -25,34 +25,34 @@ if (process.env.NODE_ENV === "development") {
 };
 
 //admin panel
-AdminJS.registerAdapter({ Database, Resource });
+// AdminJS.registerAdapter({ Database, Resource });
 
-const admin = new AdminJS({
-    resources: [
-        {
-            resource: Author,
-        },
-        {
-            resource: Book,
-        },
-        {
-            resource: Price,
-        },
-        {
-            resource: Publisher,
-        },
-        {
-            resource: Language,
-        },
-        {
-            resource: Category,
-        }
-    ],
-    rootPath: "/admin", 
-});
+// const admin = new AdminJS({
+//     resources: [
+//         {
+//             resource: Author,
+//         },
+//         {
+//             resource: Book,
+//         },
+//         {
+//             resource: Price,
+//         },
+//         {
+//             resource: Publisher,
+//         },
+//         {
+//             resource: Language,
+//         },
+//         {
+//             resource: Category,
+//         }
+//     ],
+//     rootPath: "/admin", 
+// });
 
-const adminRouter = AdminJSExpress.buildRouter(admin);
-app.use(admin.options.rootPath, adminRouter);
+// const adminRouter = AdminJSExpress.buildRouter(admin);
+// app.use(admin.options.rootPath, adminRouter);
 
 //test
 app.use(express.json());
