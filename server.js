@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import app  from "./app.js";
+import cors from "cors";
 import multer from "multer";
 import dotenv from "dotenv" ;
 dotenv.config({path: "./.env"});
@@ -13,6 +14,16 @@ const DB = process.env.DATABASE.replace(
     "<PASSWORD>",
     process.env.PASSWORD
 );
+
+ // Use CORS middleware
+ app.use(cors());
+
+ const corsOptions = {
+    origin: "https://frontend-sigma-three-18.vercel.app/",
+    optionsSuccessStatus: 200,
+  };
+ 
+  app.use(cors(corsOptions));
 
 //connect to Mongo DB
 mongoose.connect(DB).then(() => {
