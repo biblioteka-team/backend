@@ -68,7 +68,7 @@ app.use(cors(corsOptions));
 //test
 app.use(express.json());
 
-app.get("/", router);
+app.get("/api", router);
 app.use(function(req, res, next) {
     res.status(404).send("Sorry, that route doesn't exist. Have a nice day :)");
 });

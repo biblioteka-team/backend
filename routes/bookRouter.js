@@ -8,7 +8,7 @@ const router = express.Router();
 
 app.use(router);
 router
-   .route("/")
+   .route("/api")
    .get(getNewAndSalesAndBestsellerBooks);
 
 
