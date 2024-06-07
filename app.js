@@ -1,7 +1,6 @@
 import express from "express";
 import morgan  from "morgan";
 import cors from "cors";
-import corsOptions from "./server.js";
 // import AdminJS from "adminjs";
 // import AdminJSExpress from "@adminjs/express";
 // import {  Database, Resource } from "@adminjs/mongoose";
@@ -25,6 +24,16 @@ const app = express();
 if (process.env.NODE_ENV === "development") {
     app.use(morgan("dev"));
 };
+
+const corsOptions = {
+    credentials: true,
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    origin: ["http://localhost:3000", "http://localhost:303", "https://frontend-sigma-three-18.vercel.app/"],
+    optionsSuccessStatus: 200,
+};
+
+app.use(cors(corsOptions));
 
 //admin panel
 // AdminJS.registerAdapter({ Database, Resource });
