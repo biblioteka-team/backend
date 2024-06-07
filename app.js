@@ -1,5 +1,7 @@
 import express from "express";
 import morgan  from "morgan";
+import cors from "cors";
+import corsOptions from "./server.js";
 // import AdminJS from "adminjs";
 // import AdminJSExpress from "@adminjs/express";
 // import {  Database, Resource } from "@adminjs/mongoose";
@@ -57,7 +59,7 @@ if (process.env.NODE_ENV === "development") {
 //test
 app.use(express.json());
 
-app.get("/", router);
+app.get("/", cors(corsOptions), router);
 app.use(function(req, res, next) {
     res.status(404).send("Sorry, that route doesn't exist. Have a nice day :)");
 });
