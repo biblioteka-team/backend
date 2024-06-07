@@ -16,7 +16,7 @@ import Language from "./models/languageModel.js";
 // import Availability from "./models/availabilityModel.js";
 
 import handler from "./utils/uploadImagesHandler.js";
-import router from "./routes/bookRouter.js";
+import bookRouter from "./routes/bookRouter.js";
 
 const app = express();
 
@@ -68,15 +68,15 @@ app.use(cors(corsOptions));
 //test
 app.use(express.json());
 
-app.get("/api", router);
-app.use(function(req, res, next) {
-    res.status(404).send("Sorry, that route doesn't exist. Have a nice day :)");
-});
+app.use("/api", bookRouter);
+// app.use(function(req, res, next) {
+//     res.status(404).send("Sorry, that route doesn't exist. Have a nice day :)");
+// });
 
-app.post('/upload', async (_req) => {
-    const request = _req;
-    await handler(request);
-})
+// app.post('/upload', async (_req) => {
+//     const request = _req;
+//     await handler(request);
+// })
 
 
 export default app; 

@@ -2,15 +2,15 @@ import express  from "express";
 import getNewAndSalesAndBestsellerBooks from "../controllers/booksController.js";
 
 const app = express();
-const router = express.Router();
+const bookRouter = express.Router();
 
 
 
-app.use(router);
-router
-   .route("/api")
+// app.use(rbookRouter);
+bookRouter
+   .route("/")
    .get(getNewAndSalesAndBestsellerBooks);
 
 
 
-  export default router;
+  export default bookRouter;
