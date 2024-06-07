@@ -22,7 +22,10 @@ mongoose.connect(DB).then(() => {
 
 // Use CORS middleware
 const corsOptions = {
-    origin: "https://frontend-sigma-three-18.vercel.app/",
+    credentials: true,
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    origin: ["http://localhost:3000", "http://localhost:303", "https://frontend-sigma-three-18.vercel.app/"],
     optionsSuccessStatus: 200,
 };
  
