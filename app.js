@@ -29,7 +29,7 @@ const corsOptions = {
     credentials: true,
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
     allowedHeaders: ['Content-Type', 'Authorization'],
-    origin: ["http://localhost:5173", "https://frontend-sigma-three-18.vercel.app/"],
+    origin: ["http://localhost:5173", "https://frontend-sigma-three-18.vercel.app/*"],
     optionsSuccessStatus: 200,
 };
 
