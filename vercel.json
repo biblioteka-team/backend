@@ -12,5 +12,8 @@
         "src": "/(.*)",
         "dest": "server.js"
       }
+    ],
+    "redirects": [
+      { "source": "/api", "destination": "/server.js", "permanent": true }
     ]
   }
