@@ -26,6 +26,7 @@ if (process.env.NODE_ENV === "development") {
 };
 
 const corsOptions = {
+    source: "/api/:path*",
     credentials: true,
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
     allowedHeaders: ['Content-Type', 'Authorization'],
