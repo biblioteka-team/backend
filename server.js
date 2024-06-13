@@ -19,7 +19,7 @@ const DB = process.env.DATABASE.replace(
 mongoose.connect(DB).then(() => {
     console.log("DB connected");
 });
-
+//test
 // // Use CORS middleware
 // export default corsOptions = {
 //     credentials: true,
