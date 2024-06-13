@@ -35,4 +35,20 @@ const getNewAndSalesAndBestsellerBooks = catchAsync(async (req, res, next) => {
 
 });
 
-export default getNewAndSalesAndBestsellerBooks;
+const getBookbyId = catchAsync(async (req, res, next) => {
+    const book = await Book.findById(req.params.id).populate("price_id").populate("author_id")
+    .populate("publisher_id").populate("language_id").populate("category_id");
+    res.status(200).json({
+      status: "success",
+      data: {
+        book,
+      },
+    });
+  });
+  
+const booksData = {
+    getNewAndSalesAndBestsellerBooks,
+    getBookbyId
+}
+
+export default booksData;
