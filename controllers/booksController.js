@@ -45,10 +45,27 @@ const getBookbyId = catchAsync(async (req, res, next) => {
       },
     });
   });
+
+const searchBookByTitleByAuthor = catchAsync(async (req, res, next) => {
+  console.log('auth', req.params.author)
+  const {title, author} = req.params;
+  // const search =(title) ? {title: title } : {title_ukr: title} 
+
+  const searchedBook = await Book.find({title: title}).populate("price_id").populate("author_id")
+  .populate("publisher_id").populate("language_id").populate("category_id");
+  res.status(200).json({
+    status: "success",
+    data: {
+      searchedBook,
+    },
+  });
+
+});
   
 const booksData = {
     getNewAndSalesAndBestsellerBooks,
-    getBookbyId
+    getBookbyId,
+    searchBookByTitleByAuthor
 }
 
 export default booksData;

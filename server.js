@@ -19,17 +19,6 @@ const DB = process.env.DATABASE.replace(
 mongoose.connect(DB).then(() => {
     console.log("DB connected");
 });
-//test
-// // Use CORS middleware
-// export default corsOptions = {
-//     credentials: true,
-//     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
-//     allowedHeaders: ['Content-Type', 'Authorization'],
-//     origin: ["http://localhost:3000", "http://localhost:303", "https://frontend-sigma-three-18.vercel.app/"],
-//     optionsSuccessStatus: 200,
-// };
- 
-// app.use(cors(corsOptions));
 
 const port = 8000;
 
