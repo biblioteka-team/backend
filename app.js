@@ -30,14 +30,14 @@ const corsOptions = {
     credentials: true,
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
     // allowedHeaders: ['Content-Type', 'Authorization'],
-    origin: ["http://localhost:5173", "https://frontend-sigma-three-18.vercel.app/api"],
-    optionsSuccessStatus: 200,
-    headers: [
+    allowedHeaders: [
           { "key": "Access-Control-Allow-Credentials", "value": "true" },
           { "key": "Access-Control-Allow-Origin", "value": "*" },
           { "key": "Access-Control-Allow-Methods", "value": "GET,OPTIONS,PATCH,DELETE,POST,PUT" },
           { "key": "Access-Control-Allow-Headers", "value": "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version" }
-        ]
+        ],
+        origin: ["http://localhost:5173", "https://frontend-sigma-three-18.vercel.app/api"],
+        optionsSuccessStatus: 200,
 };
 
 app.use(cors(corsOptions));
