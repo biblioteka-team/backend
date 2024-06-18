@@ -1,6 +1,7 @@
 import Book from "../models/bookModel.js";
 import Price from "../models/priceModel.js";
 import {catchAsync} from "../utils/catchAsync.js";
+import  textSearch  from "mongoose-partial-full-search";
 
 const getNewAndSalesAndBestsellerBooks = catchAsync(async (req, res, next) => {
     try {
@@ -47,12 +48,16 @@ const getBookbyId = catchAsync(async (req, res, next) => {
   });
 
 const searchBookByTitleByAuthor = catchAsync(async (req, res, next) => {
-  console.log('auth', req.params.author)
-  const {title, author} = req.params;
-  // const search =(title) ? {title: title } : {title_ukr: title} 
+  const {title} = req.params;
+  let regex = new RegExp([title],'i');
+  const searchedBook = await Book.aggregate([
+    // Project the concatenated full name along with the original doc
+    // {$project: {fullname: {$concat: ['$name.first', ' ', '$name.last']}, doc: '$$ROOT'}},
 
-  const searchedBook = await Book.find({title: title}).populate("price_id").populate("author_id")
-  .populate("publisher_id").populate("language_id").populate("category_id");
+    {$match: { $or: [{ title: regex }, { title_ukr: regex }]}}
+]);
+
+console.log('search', searchedBook)
   res.status(200).json({
     status: "success",
     data: {

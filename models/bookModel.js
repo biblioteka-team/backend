@@ -7,28 +7,36 @@ const bookSchema = new mongoose.Schema({
         required: [true, "A book must have a title"],
         unique: true,
         trim: true,
+        index: true
     },
     author_id: [{
         type: Schema.Types.ObjectId,
         ref: "Author",
-        required: [true, "A book must have an author"]
+        required: [true, "A book must have an author"],
+        index: true
     }], 
     publisher_id: [{
         type: Schema.Types.ObjectId,
         ref: "Publisher",
         required: [true, "A book must have a publisher"],
+        index: true
     }], 
-    pagesQty: Number,
+    pagesQty: {
+        type: Number,
+        index: true
+    },
     language_id: [{
         type: Schema.Types.ObjectId,
         ref: "Language",
         required: [true, "A book must have a publisher"],
+        index: true
     }],
     summary: {
         type: String,
         required: [true, "A book must have a summary"],
         unique: true,
         trim: true,
+        index: true
     },
     coverImageLink: String,
     isbn: String,
@@ -36,21 +44,27 @@ const bookSchema = new mongoose.Schema({
         type: Schema.Types.ObjectId,
         ref: "Category",
         required: [true, "A book must have a category"],
+        index: true
     }],
     publication_year: String,
     type: String,
     condition: String,
-    title_ukr: String,
+    title_ukr: {
+        type: String,
+        index: true
+    },
     summary_ukr: String,
     coverImageLink_ukr: String,
     created: { 
         type: Date,
-        default: Date.now
+        default: Date.now,
+        index: true
       },
     price_id: {
         type: Schema.Types.ObjectId,
         ref: "Price",
         required: [true, "A book must have a price"],
+        index: true
     }
     
 }); 
