@@ -49,7 +49,6 @@ const getBookbyId = catchAsync(async (req, res, next) => {
   });
 
 const searchBookByTitleByAuthor = catchAsync(async (req, res, next) => {
-  const {q} = req.query;
   let regex = new RegExp([req.query.q],'i');
   const searchedBookByTitle = await Book.aggregate([
           {$match: { $or: [{ title: regex }, { title_ukr: regex }]}},
@@ -58,6 +57,30 @@ const searchBookByTitleByAuthor = catchAsync(async (req, res, next) => {
             localField: "author_id",
             foreignField: "_id",
             as: "author"} 
+          },
+          {$lookup: {
+            from: "publishers",
+            localField: "publisher_id",
+            foreignField: "_id",
+            as: "publisher"} 
+          },
+          {$lookup: {
+            from: "languages",
+            localField: "language_id",
+            foreignField: "_id",
+            as: "language"} 
+          },
+          {$lookup: {
+            from: "categories",
+            localField: "category_id",
+            foreignField: "_id",
+            as: "category"} 
+          },
+          {$lookup: {
+            from: "prices",
+            localField: "price_id",
+            foreignField: "_id",
+            as: "price"} 
           }
 
 ]);
@@ -70,6 +93,36 @@ const searchedBookByAuthor = await Author.aggregate([
     foreignField: "author_id",
     as: "book"} 
   },
+  {
+    $unwind: {
+      path: "$book",
+      preserveNullAndEmptyArrays: true
+    }
+  },
+  {$lookup: {
+    from: "publishers",
+    localField: "book.publisher_id",
+    foreignField: "_id",
+    as: "book.publisher"} 
+  },
+  {$lookup: {
+    from: "languages",
+    localField: "book.language_id",
+    foreignField: "_id",
+    as: "book.language"} 
+  },
+  {$lookup: {
+    from: "categories",
+    localField: "book.category_id",
+    foreignField: "_id",
+    as: "book.category"} 
+  },
+  {$lookup: {
+    from: "prices",
+    localField: "book.price_id",
+    foreignField: "_id",
+    as: "book.price"} 
+  }
 ])
   res.status(200).json({
     status: "success",
