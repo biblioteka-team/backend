@@ -1,5 +1,6 @@
 import Book from "../models/bookModel.js";
 import Price from "../models/priceModel.js";
+import Author from "../models/authorModel.js";
 import {catchAsync} from "../utils/catchAsync.js";
 import  textSearch  from "mongoose-partial-full-search";
 
@@ -48,20 +49,33 @@ const getBookbyId = catchAsync(async (req, res, next) => {
   });
 
 const searchBookByTitleByAuthor = catchAsync(async (req, res, next) => {
-  const {title} = req.params;
-  let regex = new RegExp([title],'i');
-  const searchedBook = await Book.aggregate([
-    // Project the concatenated full name along with the original doc
-    // {$project: {fullname: {$concat: ['$name.first', ' ', '$name.last']}, doc: '$$ROOT'}},
+  const {searchparam} = req.params;
+  let regex = new RegExp([searchparam],'i');
+  const searchedBookByTitle = await Book.aggregate([
+          {$match: { $or: [{ title: regex }, { title_ukr: regex }]}},
+          {$lookup: {
+            from: "authors",
+            localField: "author_id",
+            foreignField: "_id",
+            as: "author"} 
+          }
 
-    {$match: { $or: [{ title: regex }, { title_ukr: regex }]}}
 ]);
 
-console.log('search', searchedBook)
+const searchedBookByAuthor = await Author.aggregate([
+  {$match: { $or: [{ name: regex }, { name_ukr: regex }, { surname: regex }, { surname_ukr: regex }]}},
+  {$lookup: {
+    from: "books",
+    localField: "_id",
+    foreignField: "author_id",
+    as: "book"} 
+  },
+])
   res.status(200).json({
     status: "success",
     data: {
-      searchedBook,
+      searchedBookByTitle,
+      searchedBookByAuthor
     },
   });
 
