@@ -49,8 +49,8 @@ const getBookbyId = catchAsync(async (req, res, next) => {
   });
 
 const searchBookByTitleByAuthor = catchAsync(async (req, res, next) => {
-  const {searchparam} = req.params;
-  let regex = new RegExp([searchparam],'i');
+  const {q} = req.query;
+  let regex = new RegExp([req.query.q],'i');
   const searchedBookByTitle = await Book.aggregate([
           {$match: { $or: [{ title: regex }, { title_ukr: regex }]}},
           {$lookup: {
@@ -63,7 +63,7 @@ const searchBookByTitleByAuthor = catchAsync(async (req, res, next) => {
 ]);
 
 const searchedBookByAuthor = await Author.aggregate([
-  {$match: { $or: [{ name: regex }, { name_ukr: regex }, { surname: regex }, { surname_ukr: regex }]}},
+  {$match: { $or: [{ name: regex }, { surname: regex }, { name_ukr: regex }, { surname_ukr: regex }]}},
   {$lookup: {
     from: "books",
     localField: "_id",

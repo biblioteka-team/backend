@@ -8,7 +8,7 @@ bookRouter
    .get(booksData.getNewAndSalesAndBestsellerBooks);
 
 bookRouter
-   .route("/search/:searchparam")
+   .route("/search")
    .get(booksData.searchBookByTitleByAuthor);
 
 bookRouter
