@@ -81,7 +81,8 @@ const searchBookByTitleByAuthor = catchAsync(async (req, res, next) => {
             localField: "price_id",
             foreignField: "_id",
             as: "price"} 
-          }
+          },
+          { $unset: [ "author_id", "publisher_id", "language_id", "category_id", "price_id", "__v" ] },
 
 ]);
 
@@ -91,13 +92,20 @@ const searchedBookByAuthor = await Author.aggregate([
     from: "books",
     localField: "_id",
     foreignField: "author_id",
-    as: "book"} 
+    as: "book",
+    } 
   },
   {
     $unwind: {
       path: "$book",
       preserveNullAndEmptyArrays: true
     }
+  },
+  {$lookup: {
+    from: "authors",
+    localField: "book.author_id",
+    foreignField: "_id",
+    as: "book.author"} 
   },
   {$lookup: {
     from: "publishers",
@@ -122,13 +130,36 @@ const searchedBookByAuthor = await Author.aggregate([
     localField: "book.price_id",
     foreignField: "_id",
     as: "book.price"} 
+  },
+  {
+    $group: {
+      "_id" : "$_id",
+      "title": {"$first": "$book.title"},
+      "summary": {"$first": "$book.summary"},
+      "coverImageLink": {"$first": "$book.coverImageLink"},
+      "isbn": {"$first": "$book.isbn"},
+      "publication_year": {"$first": "$book.publication_year"},
+      "type": {"$first": "$book.type"},
+      "condition": {"$first": "$book.condition"},
+      "title_ukr": {"$first": "$book.title_ukr"},
+      "summary_ukr": {"$first": "$book.summary_ukr"},
+      "coverImageLink_ukr":  {"$first": "$book.coverImageLink_ukr"},
+      "created": {"$first": "$book.created"},
+      "author": {"$first": "$book.author"},
+      "publisher": {"$first": "$book.publisher"},
+      "language": {"$first": "$book.language"},
+      "category": {"$first": "$book.category"},
+      "price": {"$first": "$book.price"}
+    }
   }
 ])
+
+const searchResult = searchedBookByTitle != 0 ? searchedBookByTitle : searchedBookByAuthor ;
+
   res.status(200).json({
     status: "success",
     data: {
-      searchedBookByTitle,
-      searchedBookByAuthor
+      searchResult
     },
   });
 
