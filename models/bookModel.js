@@ -38,7 +38,7 @@ const bookSchema = new mongoose.Schema({
         trim: true,
         index: true
     },
-    coverImageLink: String,
+    coverImageLink: [String],
     isbn: String,
     category_id: [{
         type: Schema.Types.ObjectId,
@@ -54,7 +54,7 @@ const bookSchema = new mongoose.Schema({
         index: true
     },
     summary_ukr: String,
-    coverImageLink_ukr: String,
+    coverImageLink_ukr: [String],
     created: { 
         type: Date,
         default: Date.now,
