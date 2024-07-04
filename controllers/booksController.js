@@ -213,13 +213,15 @@ const getBookbyId = catchAsync(async (req, res, next) => {
     const category = book.category_id;
     
     const recommendation =  await recommendBook(author, category); 
+    const recommendedBooks = await recommendation.recomendedBookByAuthor[0].title != book.title ? recommendation : recommendation.recommendedBookByCategory;
+    
     res.status(200).json({
       status: "success",
       dataById: {
         book,
       },
       recommendedBook: {
-        recommendation
+        recommendedBooks
       }
     });
   });

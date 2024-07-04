@@ -70,8 +70,6 @@ try{
                     "price": {"$first": "$book.price"}
                     }
                 }
-            
-            
         ]),
 
         Category.aggregate([
