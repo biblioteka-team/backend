@@ -48,6 +48,7 @@ const bookSchema = new mongoose.Schema({
     }],
     publication_year: String,
     type: String,
+    coverType: String,
     condition: String,
     title_ukr: {
         type: String,
