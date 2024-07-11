@@ -2,7 +2,7 @@ import Book from "../models/bookModel.js";
 import Price from "../models/priceModel.js";
 import Author from "../models/authorModel.js";
 import {catchAsync} from "../utils/catchAsync.js";
-import {recommendBook} from "../utils/bookService.js";
+import {recommendBook} from "../services/bookService.js";
 
 const getNewAndSalesAndBestsellerBooks = catchAsync(async (req, res, next) => {
     try {
@@ -201,28 +201,19 @@ const getNewAndSalesAndBestsellerBooks = catchAsync(async (req, res, next) => {
 });
 
 const getBookbyId = catchAsync(async (req, res, next) => {
-    const book = await Book.findById(req.params.id).populate("price_id").populate("author_id")
-    .populate("publisher_id").populate("language_id").populate("category_id").sort({ "_id": 1, "title": 1, 
-    "_summary": 1, "coverImageLink": 1, "isbn": 1, "publication_year": 1, "type": 1, "condition": 1, 
-    "title_ukr": 1, "summary_ukr": 1, "coverImageLink_ukr": 1, "created": 1, "author": 1, "publisher": 1,
-    "language": 1, "category": 1, "price": 1});
+    const bookById = await Book.findById(req.params.id) ;
 
-
-
-    const author = book.author_id;
-    const category = book.category_id;
+    // const author = book.author_id._id;
+    const category = bookById.category_id;
+    const bookId = req.params.id
     
-    const recommendation =  await recommendBook(author, category); 
-    const recommendedBooks = await recommendation.recomendedBookByAuthor[0].title != book.title ? recommendation : recommendation.recommendedBookByCategory;
+    const recommendation =  await recommendBook(category, bookId); 
+    // const recommendedBooks = await recommendation.recomendedBookByAuthor[0].title != book.title ? recommendation : recommendation.recommendedBookByCategory;
     
     res.status(200).json({
       status: "success",
-      dataById: {
-        book,
-      },
-      recommendedBook: {
-        recommendedBooks
-      }
+      bookById,
+      recommendation    
     });
   });
 
@@ -261,7 +252,6 @@ const searchBookByTitleByAuthor = catchAsync(async (req, res, next) => {
       as: "price"} 
     },
     { $unset: [ "author_id", "publisher_id", "language_id", "category_id", "price_id", "__v" ] },
-
 ]);
 
 
@@ -350,6 +340,6 @@ const booksData = {
     getNewAndSalesAndBestsellerBooks,
     getBookbyId,
     searchBookByTitleByAuthor, 
-}
+};
 
 export default booksData;
