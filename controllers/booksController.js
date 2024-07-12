@@ -201,7 +201,8 @@ const getNewAndSalesAndBestsellerBooks = catchAsync(async (req, res, next) => {
 });
 
 const getBookbyId = catchAsync(async (req, res, next) => {
-    const bookById = await Book.findById(req.params.id) ;
+    const bookById = await Book.findById(req.params.id).populate("price_id").populate("author_id")
+    .populate("publisher_id").populate("language_id").populate("category_id");
 
     // const author = book.author_id._id;
     const category = bookById.category_id;
