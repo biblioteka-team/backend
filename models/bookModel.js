@@ -28,7 +28,7 @@ const bookSchema = new mongoose.Schema({
     language_id: [{
         type: Schema.Types.ObjectId,
         ref: "Language",
-        required: [true, "A book must have a publisher"],
+        required: [true, "A book must have a language"],
         index: true
     }],
     summary: {
@@ -65,6 +65,11 @@ const bookSchema = new mongoose.Schema({
         type: Schema.Types.ObjectId,
         ref: "Price",
         required: [true, "A book must have a price"],
+        index: true
+    },
+    storage_id: {
+        type: Schema.Types.ObjectId,
+        ref: "Datastorage",
         index: true
     }
     

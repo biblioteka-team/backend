@@ -1,0 +1,31 @@
+[
+    {
+        "book_id": "66495f6984e97e8fb9213cc9",
+        "quantity": 25
+    }, 
+    {
+        "book_id": "66495f6984e97e8fb9213ccf",
+        "quantity": 8
+    },
+    {
+        "book_id": "66495f6984e97e8fb9213cce",
+        "quantity": 15
+    }, 
+    {
+        "book_id": "66495f6984e97e8fb9213ccd",
+        "quantity": 3
+    },
+    {
+        "book_id": "664bd61648c3ece53e4d9a8e",
+        "quantity": 7
+    },
+    {
+        "book_id": "664bd61648c3ece53e4d9a8f",
+        "quantity": 4
+    },
+    {
+        "book_id": "664bd61648c3ece53e4d9a90",
+        "quantity": 10
+    }     
+
+]

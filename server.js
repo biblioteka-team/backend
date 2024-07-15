@@ -5,8 +5,8 @@ import multer from "multer";
 import dotenv from "dotenv" ;
 dotenv.config({path: "./.env"});
 
-
-import importData from "./data/data-script.js";
+// import data from "./data/data-script.js";
+// const importStorageData =  data.importStorageData;
 
 // const uploadImageHandler = require("./utils/uploadImagesHandler.js")
 
@@ -26,7 +26,7 @@ app.listen(port, () => {
     console.log("app running")
 });
 
-
+// importStorageData();
 // const storage = multer.memoryStorage();
 // const upload = multer({ storage: storage });
 

@@ -85,17 +85,8 @@ try{
                     localField: "_id",
                     foreignField: "category_id",
                     as: "book",   
-                }
+                    }
                 },
-                // {$project: {
-                //     // "$book": {
-                //         $filter: {
-                //         input: "$book",
-                //         as: "b",
-                //         cond: {$ne:["$$b._id", bookId]}
-                //         // }
-                //     }
-                // }},
                 {
                     $unwind: {
                     path: "$book",
@@ -129,7 +120,7 @@ try{
                     "summary_ukr": {"$first": "$book.summary_ukr"},
                     "coverImageLink_ukr":  {"$first": "$book.coverImageLink_ukr"},
                     "author": {"$first": "$book.author"},
-                    "price": {"$first": "$book.price"}
+                    "price": {"$first": "$book.price"},
                     }
                 },
         ])

@@ -5,7 +5,6 @@ import cors from "cors";
 // import AdminJSExpress from "@adminjs/express";
 // import {  Database, Resource } from "@adminjs/mongoose";
 
-
 import Book from "./models/bookModel.js";
 import Author from "./models/authorModel.js";
 import Price from "./models/priceModel.js";
@@ -13,7 +12,7 @@ import Publisher from "./models/publisherModel.js";
 import Category from "./models/categoryModel.js";
 import Language from "./models/languageModel.js";
 // import Address from "./models/addressModel.js";
-// import Availability from "./models/availabilityModel.js";
+import Storagedata from "./models/storagedataModel.js";
 
 import handler from "./utils/uploadImagesHandler.js";
 import bookRouter from "./routes/bookRouter.js";

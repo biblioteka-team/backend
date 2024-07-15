@@ -10,6 +10,7 @@ import Publisher from "../models/publisherModel.js";
 import Language from "../models/languageModel.js"; 
 import Book from "../models/bookModel.js";
 import Price  from "../models/priceModel.js";
+import Storagedata from "../models/storagedataModel.js";
 
 dotenv.config({path: "./.env"});
 const __filename = fileURLToPath(import.meta.url);
@@ -49,6 +50,9 @@ const prices = JSON.parse(
     fs.readFileSync(`${__dirname}/priceData.json`, "utf-8")
 );
 
+const storageData = JSON.parse(
+    fs.readFileSync(`${__dirname}/storageData.json`, "utf-8")
+);
  const importAuthorsData = async() => {
     try {
         await Author.create(authors);
@@ -103,6 +107,15 @@ const importPriceData = async() => {
     }
 };
 
+const importStorageData = async() => {
+    try {
+        await Storagedata.create(storageData);
+        console.log("Storagedata loaded");
+    } catch(err) {
+        console.log(err);
+    }
+};
+
 // const updateData = async() => {
 //     try {
 //         await author.insertMany(authors).then(el =>
@@ -118,5 +131,7 @@ const importPriceData = async() => {
 //     }
 // }
 
-const importData = {importCategoryData, importAuthorsData, importPublisherData, importLanguageData, importBooksData, importPriceData};
+const importData = {importCategoryData, importAuthorsData, 
+                    importPublisherData, importLanguageData, 
+                    importBooksData, importPriceData, importStorageData};
 export default importData;
