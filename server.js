@@ -20,7 +20,7 @@ mongoose.connect(DB).then(() => {
     console.log("DB connected");
 });
 
-const port = 8000;
+const port = 8080;
 
 app.listen(port, () => {
     console.log("app running")

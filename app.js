@@ -1,18 +1,7 @@
 import express from "express";
 import morgan  from "morgan";
 import cors from "cors";
-// import AdminJS from "adminjs";
-// import AdminJSExpress from "@adminjs/express";
-// import {  Database, Resource } from "@adminjs/mongoose";
-
-import Book from "./models/bookModel.js";
-import Author from "./models/authorModel.js";
-import Price from "./models/priceModel.js";
-import Publisher from "./models/publisherModel.js";
-import Category from "./models/categoryModel.js";
-import Language from "./models/languageModel.js";
-// import Address from "./models/addressModel.js";
-import Storagedata from "./models/storagedataModel.js";
+import { admin, adminRouter } from "./services/adminService.js";
 
 import handler from "./utils/uploadImagesHandler.js";
 import bookRouter from "./routes/bookRouter.js";
@@ -28,7 +17,6 @@ const corsOptions = {
     source: "/api/(.*)",
     credentials: true,
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
-    // allowedHeaders: ['Content-Type', 'Authorization'],
     allowedHeaders: [
           { "key": "Access-Control-Allow-Credentials", "value": "true" },
           { "key": "Access-Control-Allow-Origin", "value": "*" },
@@ -41,35 +29,7 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
-//admin panel
-// AdminJS.registerAdapter({ Database, Resource });
-
-// const admin = new AdminJS({
-//     resources: [
-//         {
-//             resource: Author,
-//         },
-//         {
-//             resource: Book,
-//         },
-//         {
-//             resource: Price,
-//         },
-//         {
-//             resource: Publisher,
-//         },
-//         {
-//             resource: Language,
-//         },
-//         {
-//             resource: Category,
-//         }
-//     ],
-//     rootPath: "/admin", 
-// });
-
-// const adminRouter = AdminJSExpress.buildRouter(admin);
-// app.use(admin.options.rootPath, adminRouter);
+app.use(admin.options.rootPath, adminRouter);
 
 //test
 app.use(express.json());
