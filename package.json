@@ -20,7 +20,8 @@
     "vercel": "^32.3.0"
   },
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "rollup": "rollup"
   },
   "type": "module",
   "name": "backend",
