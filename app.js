@@ -28,7 +28,7 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
-
+//admin panel
 app.use(admin.options.rootPath, adminRouter);
 
 //test
