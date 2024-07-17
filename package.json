@@ -19,6 +19,9 @@
     "path": "^0.12.7",
     "vercel": "^32.3.0"
   },
+  "optionalDependencies": {
+    "@rollup/rollup-linux-x64-gnu": "4.6.1"
+  },
   "scripts": {
     "start": "node server.js",
     "rollup": "rollup"
