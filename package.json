@@ -24,6 +24,9 @@
     "start": "node server.js",
     "build": "npm run server.js"
   },
+  "engines": {
+  "node": "16.x"
+  },
   "type": "module",
   "name": "backend",
   "version": "1.0.0",
