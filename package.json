@@ -32,7 +32,6 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
-    "@types/node": "^20.14.11",
     "rollup": "^4.19.0"
   }
 }
