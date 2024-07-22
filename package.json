@@ -24,7 +24,6 @@
   },
   "scripts": {
     "start": "node server.js",
-    "rollup": "rollup"
   },
   "type": "module",
   "name": "backend",
