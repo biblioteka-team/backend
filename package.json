@@ -21,8 +21,7 @@
     "vercel": "^32.3.0"
   },
   "scripts": {
-    "start": "node server.js",
-    "build": "rollup --config"
+    "start": "node server.js"
   },
   "type": "module",
   "name": "backend",
