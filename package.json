@@ -23,7 +23,7 @@
     "@rollup/rollup-linux-x64-gnu": "^4.6.1"
   },
   "scripts": {
-    "start": "node server.js",
+    "start": "node server.js"
   },
   "type": "module",
   "name": "backend",
