@@ -1,7 +1,7 @@
 import express from "express";
 import morgan  from "morgan";
 import cors from "cors";
-import { admin, adminRouter } from "./services/adminService.js";
+// import { admin, adminRouter } from "./services/adminService.js";
 
 import handler from "./utils/uploadImagesHandler.js";
 import bookRouter from "./routes/bookRouter.js";
@@ -29,7 +29,7 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
-app.use(admin.options.rootPath, adminRouter);
+// app.use(admin.options.rootPath, adminRouter);
 
 //test
 app.use(express.json());
