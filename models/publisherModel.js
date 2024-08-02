@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
+const { Schema } = mongoose;
 
-const publisherSchema = new mongoose.Schema({
+const publisherSchema = new Schema({
     Publisher: {
         type: String,
         required: [true, "A book must have a publisher"],
