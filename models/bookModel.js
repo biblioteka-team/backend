@@ -1,5 +1,9 @@
 import mongoose from "mongoose";
 const { Schema } = mongoose;
+import Publisher from "./publisherModel.js";
+import Language from "./languageModel.js";
+import Datastorage from "./storagedataModel.js";
+
 
 const bookSchema = new mongoose.Schema({
     title: {
@@ -17,7 +21,7 @@ const bookSchema = new mongoose.Schema({
     }], 
     publisher_id: [{
         type: Schema.Types.ObjectId,
-        ref: "Publisher",
+        ref: Publisher,
         required: [true, "A book must have a publisher"],
         index: true
     }], 
@@ -27,7 +31,7 @@ const bookSchema = new mongoose.Schema({
     },
     language_id: [{
         type: Schema.Types.ObjectId,
-        ref: "Language",
+        ref: Language,
         required: [true, "A book must have a language"],
         index: true
     }],
@@ -69,7 +73,7 @@ const bookSchema = new mongoose.Schema({
     },
     storage_id: {
         type: Schema.Types.ObjectId,
-        ref: "Datastorage",
+        ref: Datastorage,
         index: true
     }
     
