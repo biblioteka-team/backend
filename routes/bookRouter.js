@@ -12,8 +12,11 @@ bookRouter
    .get(booksData.searchBookByTitleByAuthor);
 
 bookRouter
+   .route("/catalog")
+   .get(booksData.getSortedBooksList);
+
+bookRouter
    .route("/:id")
    .get(booksData.getBookbyId);
-
 
 export default bookRouter;
