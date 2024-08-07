@@ -1,7 +1,7 @@
 import Book from "../models/bookModel.js";
 import Author from "../models/authorModel.js";
 import {catchAsync} from "../utils/catchAsync.js";
-import {recommendBook, getNewBook, getSalesBook, getBestsellerBook} from "../services/bookService.js";
+import {recommendBook, getNewBook, getSalesBook, getBestsellerBook, getBooksByLanguage} from "../services/bookService.js";
 
 const getNewAndSalesAndBestsellerBooks = catchAsync(async (req, res, next) => {
     try {
@@ -166,35 +166,38 @@ const getSortedBooksList = catchAsync(async (req, res, next) => {
    if(req.query.completed) {
             match.completed = req.query.completed  === true
       }
-
-  let requestForSortedBooks;
-
-  // try {
-  //   const [requestForSortedBooks] = await Promise.all([
-         
   
-          //check if query parameter provided
-          // if(req.query.completed) {
-          //   match.completed = req.query.completed  === true
-          // }
-  
-          let regexRequested = new RegExp([req.query.q],'i')
+  let prefernces = req.query.q;
+  let langPrefernces = req.query.lang;
+  console.log(langPrefernces)
+  prefernces && prefernces.toString();
+  langPrefernces && langPrefernces.toString();
 
-        if(regexRequested === "new") {
-          requestForSortedBooks = getNewBook();
+  let requestForSortedBooks = {};
+  // let newBooks = await getNewBook()
+  // let langBooks = await getBooksByLanguage();
+
+        if(prefernces === "new"){
+          requestForSortedBooks = await getNewBook();
         }
-        // getNewBook()
-// ]);
+        if (prefernces === "sales") {
+          requestForSortedBooks = await getSalesBook();
+        }
+        if (prefernces === "bestsellers") {
+          requestForSortedBooks = await getBestsellerBook();
+        }
+        if(langPrefernces === "English") {
+          requestForSortedBooks = await getBooksByLanguage(langPrefernces);
+        }
+        
+        // console.log(langPrefernces)
+        // console.log(requestForSortedBooks)
   res.status(200).json({
     status: "success",
     data: {
       sortedBooks:  requestForSortedBooks
     },
   })
-  // } catch (err) {
-  //     console.error(err);
-  //     res.status(500).send('Internal Server Error');
-  // }
 });
 
   

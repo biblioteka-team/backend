@@ -2,6 +2,7 @@
 import Category from "../models/categoryModel.js";
 import Book from "../models/bookModel.js";
 import Price from "../models/priceModel.js";
+import Language from "../models/languageModel.js";
 
 export const recommendBook =  async (category, bookId) => {
 try{
@@ -266,4 +267,83 @@ export const getBestsellerBook = async () => {
         console.error(err);
     }
     
+}
+
+export const getBooksByLanguage = async(language) => {
+  try{
+    const [sortedBooksByLanguage] = await Promise.all([
+      Language.aggregate([
+        {$match: {_id: language[0]._id }},
+        {$lookup: {
+          from: "books",
+          localField: "_id",
+          foreignField: "language_id",
+          as: "book",   
+          }
+      },
+      {
+          $unwind: {
+          path: "$book",
+          preserveNullAndEmptyArrays: true
+          }
+      },
+        {$lookup: {
+          from: "authors",
+          localField: "author_id",
+          foreignField: "_id",
+          as: "author"} 
+        },
+        {$lookup: {
+          from: "languages",
+          localField: "language_id",
+          foreignField: "_id",
+          as: "language"} 
+        },
+        {$lookup: {
+          from: "publishers",
+          localField: "publisher_id",
+          foreignField: "_id",
+          as: "publisher"} 
+        },
+        {$lookup: {
+          from: "categories",
+          localField: "category_id",
+          foreignField: "_id",
+          as: "category"} 
+        },
+        {$lookup: {
+          from: "prices",
+          localField: "price_id",
+          foreignField: "_id",
+          as: "price"} 
+        },
+        { $unset: [ "author_id", "publisher_id", "category_id", "price_id", "__v" ] },
+        {
+          $group: {
+            "_id" : "$_id",
+            "title": {"$first": "$title"},
+            "summary": {"$first": "$summary"},
+            "coverImageLink": {"$first": "$coverImageLink"},
+            "isbn": {"$first": "$isbn"},
+            "publication_year": {"$first": "$publication_year"},
+            "type": {"$first": "$type"},
+            "condition": {"$first": "$condition"},
+            "title_ukr": {"$first": "$title_ukr"},
+            "summary_ukr": {"$first": "$summary_ukr"},
+            "coverImageLink_ukr":  {"$first": "$coverImageLink_ukr"},
+            "created": {"$first": "$created"},
+            "author": {"$first": "$author"},
+            "publisher": {"$first": "$publisher"},
+            "language": {"$first": "$language"},
+            "category": {"$first": "$category"},
+            "price": {"$first": "$price"}
+          }
+        }
+    ])
+      ]);
+      return  sortedBooksByLanguage;               
+      } catch (err) {
+          console.error(err);
+      }
+
 }
