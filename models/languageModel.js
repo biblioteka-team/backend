@@ -1,7 +1,11 @@
 import mongoose from "mongoose";
 
 const languageSchema = new mongoose.Schema({
-    language: String
+    language: {
+        type: String,
+        required: [true, "A book must have a language"],
+        trim: true,
+    }
 });
 
 const Language = mongoose.model("Language", languageSchema);

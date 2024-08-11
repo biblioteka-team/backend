@@ -167,27 +167,26 @@ const getSortedBooksList = catchAsync(async (req, res, next) => {
             match.completed = req.query.completed  === true
       }
   
-  let prefernces = req.query.q;
-  let langPrefernces = req.query.lang;
-  console.log(langPrefernces)
-  prefernces && prefernces.toString();
-  langPrefernces && langPrefernces.toString();
+  let preferences = req.query.q;
+  let langPreferences = req.query.lang;
+  langPreferences.toString();
+  console.log(langPreferences)
+
+  
 
   let requestForSortedBooks = {};
-  // let newBooks = await getNewBook()
-  // let langBooks = await getBooksByLanguage();
 
-        if(prefernces === "new"){
+        if(preferences === "new"){
           requestForSortedBooks = await getNewBook();
         }
-        if (prefernces === "sales") {
+        if (preferences === "sales") {
           requestForSortedBooks = await getSalesBook();
         }
-        if (prefernces === "bestsellers") {
+        if (preferences === "bestsellers") {
           requestForSortedBooks = await getBestsellerBook();
         }
-        if(langPrefernces === "English") {
-          requestForSortedBooks = await getBooksByLanguage(langPrefernces);
+        if(langPreferences) {
+          requestForSortedBooks = await getBooksByLanguage(langPreferences);
         }
         
         // console.log(langPrefernces)
