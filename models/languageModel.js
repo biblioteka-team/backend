@@ -5,6 +5,10 @@ const languageSchema = new mongoose.Schema({
         type: String,
         required: [true, "A book must have a language"],
         trim: true,
+    },
+    language_ukr: {
+        type: String,
+        trim: true,
     }
 });
 

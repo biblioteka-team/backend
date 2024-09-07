@@ -1,0 +1,130 @@
+[
+  {
+    "genre": "Novels",
+    "genre_ukr": "Романи"
+  },
+  {
+    "genre": "Romance Novels",
+    "genre_ukr": "Любовні романи"
+  },
+  {
+    "genre": "Historical Novels",
+    "genre_ukr": "Історичні романи"
+  },
+  {
+    "genre": "Detective Novels",
+    "genre_ukr": "Детективні романи"
+  },
+  {
+    "genre": "Science Fiction",
+    "genre_ukr": "Наукова фантастика"
+  },
+  {
+    "genre": "Fantasy",
+    "genre_ukr": "Фентезі"
+  },
+  {
+    "genre": "Psychological Novels",
+    "genre_ukr": "Психологічні романи"
+  },
+  {
+    "genre": "Poetry",
+    "genre_ukr": "Поезія"
+  },
+  {
+    "genre": "Biographies and Memoirs",
+    "genre_ukr": "Біографії та мемуари"
+  },
+  {
+    "genre": "History",
+    "genre_ukr": "Історія"
+  },
+  {
+    "genre": "Science and Technology",
+    "genre_ukr": "Наука і техніка"
+  },
+  {
+    "genre": "Philosophy",
+    "genre_ukr": "Філософія"
+  },
+  {
+    "genre": "Psychology",
+    "genre_ukr": "Психологія"
+  },
+  {
+    "genre": "Economics and Business",
+    "genre_ukr": "Економіка і бізнес"
+  },
+  {
+    "genre": "Art and Culture",
+    "genre_ukr": "Мистецтво і культура"
+  },
+  {
+    "genre": "Travel and Tourism",
+    "genre_ukr": "Подорожі і туризм"
+  },
+  {
+    "genre": "Cooking",
+    "genre_ukr": "Кулінарія"
+  },
+  {
+    "genre": "Fairy Tales",
+    "genre_ukr": "Казки"
+  },
+  {
+    "genre": "Stories for Preschoolers",
+    "genre_ukr": "Розповіді для дошкільнят"
+  },
+  {
+    "genre": "Books for Primary School Age",
+    "genre_ukr": "Книги для молодшого шкільного віку"
+  },
+  {
+    "genre": "Teen Literature",
+    "genre_ukr": "Підліткова література"
+  },
+  {
+    "genre": "Educational Books",
+    "genre_ukr": "Освітні книги"
+  },
+  {
+    "genre": "School Preparation",
+    "genre_ukr": "Підготовка до школи"
+  },
+  {
+    "genre": "Textbooks",
+    "genre_ukr": "Підручники"
+  },
+  {
+    "genre": "Manuals",
+    "genre_ukr": "Посібники"
+  },
+  {
+    "genre": "Motivational Books",
+    "genre_ukr": "Мотиваційні книги"
+  },
+  {
+    "genre": "Self-Development Psychology",
+    "genre_ukr": "Психологія саморозвитку"
+  },
+  {
+    "genre": "Health and Fitness",
+    "genre_ukr": "Здоров'я і фітнес"
+  },
+  {
+    "genre": "Medical Literature",
+    "genre_ukr": "Медична література"
+  },
+  {
+    "genre": "Law",
+    "genre_ukr": "Правознавство"
+  },
+  {
+    "genre": "Technical Literature",
+    "genre_ukr": "Технічна література"
+  },
+  {
+    "genre": "Information Technology",
+    "genre_ukr": "Інформаційні технології"
+  }
+]

@@ -2,12 +2,13 @@ import Book from "../models/bookModel.js";
 import Author from "../models/authorModel.js";
 import {catchAsync} from "../utils/catchAsync.js";
 import {recommendBook, getNewBook, getSalesBook, getBestsellerBook, getBooksByLanguage} from "../services/bookService.js";
+import { sortingFormFields } from "../services/formService.js";
 
 const getNewAndSalesAndBestsellerBooks = catchAsync(async (req, res, next) => {
     try {
     const [newBooks, salesBooks, bestsellerBooks] = await Promise.all([
         //get new books by date
-        getNewBook(),
+        getNsewBook(),
 
         //get books with discounted price
         getSalesBook(),
@@ -167,34 +168,40 @@ const getSortedBooksList = catchAsync(async (req, res, next) => {
             match.completed = req.query.completed  === true
       }
   
+ const fields = await sortingFormFields();
   let preferences = req.query.q;
   let langPreferences = req.query.lang;
-  langPreferences.toString();
-  console.log(langPreferences)
-
-  
+  let coverPreferences = req.query.cover;
+  // langPreferences.toString();
+  // overPreferences.toString();
+  console.log(coverPreferences)
 
   let requestForSortedBooks = {};
 
         if(preferences === "new"){
-          requestForSortedBooks = await getNewBook();
+          requestForSortedBooks.preferences = await getNewBook();
         }
         if (preferences === "sales") {
-          requestForSortedBooks = await getSalesBook();
+          requestForSortedBooks.preferences = await getSalesBook();
         }
         if (preferences === "bestsellers") {
-          requestForSortedBooks = await getBestsellerBook();
+          requestForSortedBooks.preferences = await getBestsellerBook();
         }
         if(langPreferences) {
-          requestForSortedBooks = await getBooksByLanguage(langPreferences);
+          requestForSortedBooks.preferencesByLanguage = await getBooksByLanguage(langPreferences);
         }
-        
-        // console.log(langPrefernces)
-        // console.log(requestForSortedBooks)
+        // if(coverPreferences) {
+        //   requestForSortedBooks.preferencesByCover = await getBooksByCover(coverPreferences);
+        // }
+
   res.status(200).json({
     status: "success",
     data: {
-      sortedBooks:  requestForSortedBooks
+      fields: fields,
+      sortedBooksPreferences:  requestForSortedBooks.preferences,
+      booksByLanguage: requestForSortedBooks.preferencesByLanguage,
+      booksByCover:  requestForSortedBooks.preferencesByCover
+
     },
   })
 });
