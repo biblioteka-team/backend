@@ -3,6 +3,8 @@ const { Schema } = mongoose;
 import Publisher from "./publisherModel.js";
 import Language from "./languageModel.js";
 import Datastorage from "./storagedataModel.js";
+import Cover from "./coverModel.js";
+import Age from "./ageModel.js";
 
 
 const bookSchema = new mongoose.Schema({
@@ -52,7 +54,11 @@ const bookSchema = new mongoose.Schema({
     }],
     publication_year: String,
     type: String,
-    coverType: String,
+    coverType_id: {
+        type: Schema.Types.ObjectId,
+        ref: Cover,
+        index: true
+    },
     condition: String,
     title_ukr: {
         type: String,
@@ -74,6 +80,11 @@ const bookSchema = new mongoose.Schema({
     storage_id: {
         type: Schema.Types.ObjectId,
         ref: Datastorage,
+        index: true
+    },
+    age_id: {
+        type: Schema.Types.ObjectId,
+        ref: Age,
         index: true
     }
     

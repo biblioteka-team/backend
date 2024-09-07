@@ -1,0 +1,14 @@
+[   {
+        "cover_type": "Hardcover",
+        "cover_type_ukr": "Тверда"
+     },
+     {
+        "cover_type": "Softcover",
+        "cover_type_ukr": "М’яка"
+     },  
+    {
+        "cover_type": "Integral",
+        "cover_type_ukr": "Інтегральна"
+    }
+
+]

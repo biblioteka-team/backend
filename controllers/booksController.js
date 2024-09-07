@@ -1,13 +1,14 @@
 import Book from "../models/bookModel.js";
 import Author from "../models/authorModel.js";
 import {catchAsync} from "../utils/catchAsync.js";
-import {recommendBook, getNewBook, getSalesBook, getBestsellerBook, getBooksByLanguage, getBooksByCover} from "../services/bookService.js";
+import {recommendBook, getNewBook, getSalesBook, getBestsellerBook, getBooksByLanguage} from "../services/bookService.js";
+import { sortingFormFields } from "../services/formService.js";
 
 const getNewAndSalesAndBestsellerBooks = catchAsync(async (req, res, next) => {
     try {
     const [newBooks, salesBooks, bestsellerBooks] = await Promise.all([
         //get new books by date
-        getNewBook(),
+        getNsewBook(),
 
         //get books with discounted price
         getSalesBook(),
@@ -167,6 +168,7 @@ const getSortedBooksList = catchAsync(async (req, res, next) => {
             match.completed = req.query.completed  === true
       }
   
+ const fields = await sortingFormFields();
   let preferences = req.query.q;
   let langPreferences = req.query.lang;
   let coverPreferences = req.query.cover;
@@ -188,13 +190,14 @@ const getSortedBooksList = catchAsync(async (req, res, next) => {
         if(langPreferences) {
           requestForSortedBooks.preferencesByLanguage = await getBooksByLanguage(langPreferences);
         }
-        if(coverPreferences) {
-          requestForSortedBooks.preferencesByCover = await getBooksByCover(coverPreferences);
-        }
+        // if(coverPreferences) {
+        //   requestForSortedBooks.preferencesByCover = await getBooksByCover(coverPreferences);
+        // }
 
   res.status(200).json({
     status: "success",
     data: {
+      fields: fields,
       sortedBooksPreferences:  requestForSortedBooks.preferences,
       booksByLanguage: requestForSortedBooks.preferencesByLanguage,
       booksByCover:  requestForSortedBooks.preferencesByCover

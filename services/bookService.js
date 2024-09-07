@@ -347,68 +347,68 @@ export const getBooksByLanguage = async(langPreferences) => {
 
 }
 
-export const getBooksByCover = async(coverPreferences) => {
-  try {
-  const [sortedBooksByCover] = await Promise.all([
-    Book.aggregate([
-      {$match: { coverType: coverPreferences}},
-      {$lookup: {
-          from: "authors",
-          localField: "author_id",
-          foreignField: "_id",
-          as: "author"} 
-        },
-        {$lookup: {
-          from: "publishers",
-          localField: "publisher_id",
-          foreignField: "_id",
-          as: "publisher"} 
-        },
-        {$lookup: {
-          from: "languages",
-          localField: "language_id",
-          foreignField: "_id",
-          as: "language"} 
-        },
-        {$lookup: {
-          from: "categories",
-          localField: "category_id",
-          foreignField: "_id",
-          as: "category"} 
-        },
-        {$lookup: {
-          from: "prices",
-          localField: "price_id",
-          foreignField: "_id",
-          as: "price"} 
-        },
-        { $unset: [ "author_id", "publisher_id", "language_id", "category_id", "price_id", "__v" ] },
-        {
-          $group: {
-            "_id" : "$_id",
-            "title": {"$first": "$title"},
-            "summary": {"$first": "$summary"},
-            "coverImageLink": {"$first": "$coverImageLink"},
-            "isbn": {"$first": "$isbn"},
-            "publication_year": {"$first": "$publication_year"},
-            "type": {"$first": "$type"},
-            "condition": {"$first": "$condition"},
-            "title_ukr": {"$first": "$title_ukr"},
-            "summary_ukr": {"$first": "$summary_ukr"},
-            "coverImageLink_ukr":  {"$first": "$coverImageLink_ukr"},
-            "created": {"$first": "$created"},
-            "author": {"$first": "$author"},
-            "publisher": {"$first": "$publisher"},
-            "language": {"$first": "$language"},
-            "category": {"$first": "$category"},
-            "price": {"$first": "$price"}, 
-            "coverType": {"$first": "$coverType"}
-          }
-        }
-  ])
-  ])
-  return sortedBooksByCover;
-  } catch(err) {
-    console.log(err);
-  }
-}
+// export const getBooksByCover = async(coverPreferences) => {
+//   try {
+//   const [sortedBooksByCover] = await Promise.all([
+//     Book.aggregate([
+//       {$match: { coverType: coverPreferences}},
+//       {$lookup: {
+//           from: "authors",
+//           localField: "author_id",
+//           foreignField: "_id",
+//           as: "author"} 
+//         },
+//         {$lookup: {
+//           from: "publishers",
+//           localField: "publisher_id",
+//           foreignField: "_id",
+//           as: "publisher"} 
+//         },
+//         {$lookup: {
+//           from: "languages",
+//           localField: "language_id",
+//           foreignField: "_id",
+//           as: "language"} 
+//         },
+//         {$lookup: {
+//           from: "categories",
+//           localField: "category_id",
+//           foreignField: "_id",
+//           as: "category"} 
+//         },
+//         {$lookup: {
+//           from: "prices",
+//           localField: "price_id",
+//           foreignField: "_id",
+//           as: "price"} 
+//         },
+//         { $unset: [ "author_id", "publisher_id", "language_id", "category_id", "price_id", "__v" ] },
+//         {
+//           $group: {
+//             "_id" : "$_id",
+//             "title": {"$first": "$title"},
+//             "summary": {"$first": "$summary"},
+//             "coverImageLink": {"$first": "$coverImageLink"},
+//             "isbn": {"$first": "$isbn"},
+//             "publication_year": {"$first": "$publication_year"},
+//             "type": {"$first": "$type"},
+//             "condition": {"$first": "$condition"},
+//             "title_ukr": {"$first": "$title_ukr"},
+//             "summary_ukr": {"$first": "$summary_ukr"},
+//             "coverImageLink_ukr":  {"$first": "$coverImageLink_ukr"},
+//             "created": {"$first": "$created"},
+//             "author": {"$first": "$author"},
+//             "publisher": {"$first": "$publisher"},
+//             "language": {"$first": "$language"},
+//             "category": {"$first": "$category"},
+//             "price": {"$first": "$price"}, 
+//             "coverType": {"$first": "$coverType"}
+//           }
+//         }
+//   ])
+//   ])
+//   return sortedBooksByCover;
+//   } catch(err) {
+//     console.log(err);
+//   }
+// }

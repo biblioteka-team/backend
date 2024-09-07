@@ -4,9 +4,11 @@ import cors from "cors";
 import multer from "multer";
 import dotenv from "dotenv" ;
 dotenv.config({path: "./.env"});
-
-// import data from "./data/data-script.js";
+import { sortingFormFields } from "./services/formService.js";
+import data from "./data/data-script.js";
 // const importStorageData =  data.importStorageData;
+// const importGenreData =  data.importGenreData;
+const importAgesData = data.importAgesData;
 
 // const uploadImageHandler = require("./utils/uploadImagesHandler.js")
 
@@ -26,7 +28,7 @@ app.listen(port, () => {
     console.log("app running")
 });
 
-// importStorageData();
+// importAgesData()
 // const storage = multer.memoryStorage();
 // const upload = multer({ storage: storage });
 
