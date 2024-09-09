@@ -8,7 +8,7 @@ const getNewAndSalesAndBestsellerBooks = catchAsync(async (req, res, next) => {
     try {
     const [newBooks, salesBooks, bestsellerBooks] = await Promise.all([
         //get new books by date
-        getNsewBook(),
+        getNewBook(),
 
         //get books with discounted price
         getSalesBook(),
