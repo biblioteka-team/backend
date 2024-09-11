@@ -163,28 +163,28 @@ const searchBookByTitleByAuthor = catchAsync(async (req, res, next) => {
 });
 
 const getSortedBooksList = catchAsync(async (req, res, next) => {
-  const match = {};
-   if(req.query.completed) {
-            match.completed = req.query.completed  === true
-      }
+  // const match = {};
+  //  if(req.query.completed) {
+  //           match.completed = req.query.completed  === true
+  //     }
   
- const fields = await sortingFormFields();
-  let preferences = req.query.q;
-  let langPreferences = req.query.lang;
-  let coverPreferences = req.query.cover;
+  const fields = await sortingFormFields();
+  let preferences = req.query.id;
+  let langPreferences = req.query.langId;
+  // let coverPreferences = req.query.cover;
   // langPreferences.toString();
   // overPreferences.toString();
-  console.log(coverPreferences)
+  console.log(langPreferences)
 
   let requestForSortedBooks = {};
 
-        if(preferences === "new"){
+        if(preferences === "001"){
           requestForSortedBooks.preferences = await getNewBook();
         }
-        if (preferences === "sales") {
+        if (preferences === "002") {
           requestForSortedBooks.preferences = await getSalesBook();
         }
-        if (preferences === "bestsellers") {
+        if (preferences === "003") {
           requestForSortedBooks.preferences = await getBestsellerBook();
         }
         if(langPreferences) {
@@ -200,7 +200,7 @@ const getSortedBooksList = catchAsync(async (req, res, next) => {
       fields: fields,
       sortedBooksPreferences:  requestForSortedBooks.preferences,
       booksByLanguage: requestForSortedBooks.preferencesByLanguage,
-      booksByCover:  requestForSortedBooks.preferencesByCover
+      // booksByCover:  requestForSortedBooks.preferencesByCover
 
     },
   })
