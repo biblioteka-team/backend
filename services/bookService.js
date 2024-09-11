@@ -135,7 +135,7 @@ export const getSalesBook = async () => {
               }}, {
                 $lookup: {
                   from: "books",
-                  localField: "book_id",
+                  localField: "price_id",
                   foreignField: "_id",
                   as: "book"}
               }, 
@@ -275,7 +275,7 @@ export const getBooksByLanguage = async(langPreferences) => {
   try{
     const [sortedBooksByLanguage] = await Promise.all([
       Language.aggregate([
-        {$match: {language: langPreferences}},
+        {$match: {_id: [langPreferences]}},
         {$lookup: {
           from: "books",
           localField: "_id",
@@ -342,6 +342,7 @@ export const getBooksByLanguage = async(langPreferences) => {
         }
         ])
       ]);
+      console.log(sortedBooksByLanguage)
       return  sortedBooksByLanguage;               
       } catch (err) {
           console.error(err);
