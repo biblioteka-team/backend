@@ -5,6 +5,7 @@ import Language from "./languageModel.js";
 import Datastorage from "./storagedataModel.js";
 import Cover from "./coverModel.js";
 import Age from "./ageModel.js";
+import Genre from "./genreModel.js";
 
 
 const bookSchema = new mongoose.Schema({
@@ -85,6 +86,11 @@ const bookSchema = new mongoose.Schema({
     age_id: {
         type: Schema.Types.ObjectId,
         ref: Age,
+        index: true
+    },
+    genre_id: {
+        type: Schema.Types.ObjectId,
+        ref: Genre,
         index: true
     }
     
