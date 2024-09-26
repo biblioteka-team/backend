@@ -22,12 +22,12 @@ const bookSchema = new mongoose.Schema({
         required: [true, "A book must have an author"],
         index: true
     }], 
-    publisher_id: [{
+    publisher_id: {
         type: Schema.Types.ObjectId,
         ref: Publisher,
         required: [true, "A book must have a publisher"],
         index: true
-    }], 
+    }, 
     pagesQty: {
         type: Number,
         index: true
@@ -88,11 +88,11 @@ const bookSchema = new mongoose.Schema({
         ref: Age,
         index: true
     },
-    genre_id: {
+    genre_id: [{
         type: Schema.Types.ObjectId,
         ref: Genre,
         index: true
-    }
+    }]
     
 }); 
 

@@ -33,6 +33,21 @@
         "book_id": "664bd61648c3ece53e4d9a90",
         "original_price": 520.0,
         "discounted_price": 0.0
-    }     
+    },
+    {
+        "book_id": "664bd61648c3ece53e4d9a8e",
+        "original_price:": 425.0,
+        "discounted_price": 0.0
+    },
+    {
+        "book_id": "664bd61648c3ece53e4d9a8f",
+        "original_price": 220.0,
+        "discounted_price": 190.0
+    },
+    {
+        "book_id": "664bd61648c3ece53e4d9a90",
+        "original_price": 320.0,
+        "discounted_price": 0.0
+    }         
 
 ]

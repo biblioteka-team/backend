@@ -1,43 +1,27 @@
 
 [
     {
-      "category": "classic",
-      "category_ukr": "класика"
+      "category": "Non-Fiction",
+      "category_ukr": "Нехудожня література"
     },
     {
-      "category": "modern",
-      "category_ukr": "сучасний"
+      "category": "Children's Literature",
+      "category_ukr": "Дитяча література"
     },
     {
-      "category": "modern classic",
-      "category_ukr": "сучасна класика"
+      "category": "Educational Literature",
+      "category_ukr": "Навчальна література"
     },
     {
-      "category": "dystopian",
-      "category_ukr": "антиутопія"
+      "category": "Fiction",
+      "category_ukr": "Художня література"
     },
     {
-      "category": "romance",
-      "category_ukr": "романтика"
+      "category": "Self-Improvement",
+      "category_ukr": "Самовдосконалення"
     },
     {
-      "category": "novella",
-      "category_ukr": "новела"
-    },
-    {
-      "category": "adventure",
-      "category_ukr": "пригоди"
-    },
-    {
-      "category": "short story",
-      "category_ukr": "коротка історія"
-    },
-    {
-      "category": "philosophical",
-      "category_ukr": "філософський"
-    },
-    {
-      "category": "science fiction",
-      "category_ukr": "наукова фантастика"
+      "category": "Specialized Literature",
+      "category_ukr": "Спеціалізована література"
     }
   ]

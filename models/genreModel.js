@@ -11,7 +11,13 @@ const genreSchema = new mongoose.Schema({
         type: String,
         required: [true, "A book must have a genre"],
         trim: true,
-    }
+    },
+    category_id: [{
+        type: Schema.Types.ObjectId,
+        ref: "Category",
+        required: [true, "A genre must have a category"],
+        index: true
+    }]
 });
 
 const Genre = mongoose.model("Genre", genreSchema);

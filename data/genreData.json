@@ -1,130 +1,153 @@
 [
   {
     "genre": "Novels",
-    "genre_ukr": "Романи"
+    "genre_ukr": "Романи",
+    "category_id": "66f583cfb42e9426eae9c847"
   },
   {
     "genre": "Romance Novels",
-    "genre_ukr": "Любовні романи"
+    "genre_ukr": "Любовні романи",
+    "category_id": "66f583cfb42e9426eae9c847"
   },
   {
     "genre": "Historical Novels",
-    "genre_ukr": "Історичні романи"
+    "genre_ukr": "Історичні романи",
+    "category_id": "66f583cfb42e9426eae9c847"
   },
   {
     "genre": "Detective Novels",
-    "genre_ukr": "Детективні романи"
+    "genre_ukr": "Детективні романи",
+    "category_id": "66f583cfb42e9426eae9c847"
   },
   {
     "genre": "Science Fiction",
-    "genre_ukr": "Наукова фантастика"
+    "genre_ukr": "Наукова фантастика",
+    "category_id": "66f583cfb42e9426eae9c847"
   },
   {
     "genre": "Fantasy",
-    "genre_ukr": "Фентезі"
+    "genre_ukr": "Фентезі",
+    "category_id": "66f583cfb42e9426eae9c847"
   },
   {
     "genre": "Psychological Novels",
-    "genre_ukr": "Психологічні романи"
+    "genre_ukr": "Психологічні романи",
+    "category_id": "66f583cfb42e9426eae9c847"
   },
   {
     "genre": "Poetry",
-    "genre_ukr": "Поезія"
+    "genre_ukr": "Поезія",
+    "category_id": "66f583cfb42e9426eae9c847"
   },
   {
     "genre": "Biographies and Memoirs",
-    "genre_ukr": "Біографії та мемуари"
+    "genre_ukr": "Біографії та мемуари",
+    "category_id": "66f583cfb42e9426eae9c844"
   },
   {
     "genre": "History",
-    "genre_ukr": "Історія"
+    "genre_ukr": "Історія",
+    "category_id": "66f583cfb42e9426eae9c844"
   },
   {
     "genre": "Science and Technology",
-    "genre_ukr": "Наука і техніка"
+    "genre_ukr": "Наука і техніка",
+    "category_id": "66f583cfb42e9426eae9c844"
   },
   {
     "genre": "Philosophy",
-    "genre_ukr": "Філософія"
+    "genre_ukr": "Філософія",
+    "category_id": "66f583cfb42e9426eae9c844"
   },
   {
     "genre": "Psychology",
-    "genre_ukr": "Психологія"
+    "genre_ukr": "Психологія",
+    "category_id": "66f583cfb42e9426eae9c844"
   },
   {
     "genre": "Economics and Business",
-    "genre_ukr": "Економіка і бізнес"
+    "genre_ukr": "Економіка і бізнес",
+    "category_id": "66f583cfb42e9426eae9c844"
   },
   {
     "genre": "Art and Culture",
-    "genre_ukr": "Мистецтво і культура"
+    "genre_ukr": "Мистецтво і культура",
+    "category_id": "66f583cfb42e9426eae9c844"
   },
   {
     "genre": "Travel and Tourism",
-    "genre_ukr": "Подорожі і туризм"
+    "genre_ukr": "Подорожі і туризм",
+    "category_id": "66f583cfb42e9426eae9c844"
   },
   {
     "genre": "Cooking",
-    "genre_ukr": "Кулінарія"
+    "genre_ukr": "Кулінарія",
+    "category_id": "66f583cfb42e9426eae9c844"
   },
   {
     "genre": "Fairy Tales",
-    "genre_ukr": "Казки"
+    "genre_ukr": "Казки",
+    "category_id": "66f583cfb42e9426eae9c845"
   },
   {
     "genre": "Stories for Preschoolers",
-    "genre_ukr": "Розповіді для дошкільнят"
+    "genre_ukr": "Розповіді для дошкільнят",
+    "category_id": "66f583cfb42e9426eae9c845"
   },
   {
     "genre": "Books for Primary School Age",
-    "genre_ukr": "Книги для молодшого шкільного віку"
+    "genre_ukr": "Книги для молодшого шкільного віку",
+    "category_id": "66f583cfb42e9426eae9c845"
   },
   {
     "genre": "Teen Literature",
-    "genre_ukr": "Підліткова література"
-  },
-  {
-    "genre": "Educational Books",
-    "genre_ukr": "Освітні книги"
+    "genre_ukr": "Підліткова література",
+    "category_id": "66f583cfb42e9426eae9c845"
+
   },
   {
     "genre": "School Preparation",
-    "genre_ukr": "Підготовка до школи"
+    "genre_ukr": "Підготовка до школи",
+    "category_id": "66f583cfb42e9426eae9c846"
   },
   {
     "genre": "Textbooks",
-    "genre_ukr": "Підручники"
+    "genre_ukr": "Підручники",
+    "category_id": "66f583cfb42e9426eae9c846"
   },
   {
     "genre": "Manuals",
-    "genre_ukr": "Посібники"
+    "genre_ukr": "Посібники",
+    "category_id": "66f583cfb42e9426eae9c846"
   },
   {
     "genre": "Motivational Books",
-    "genre_ukr": "Мотиваційні книги"
+    "genre_ukr": "Мотиваційні книги",
+    "category_id": "66f583cfb42e9426eae9c848"
   },
   {
     "genre": "Self-Development Psychology",
-    "genre_ukr": "Психологія саморозвитку"
+    "genre_ukr": "Психологія саморозвитку",
+    "category_id": "66f583cfb42e9426eae9c848"
   },
   {
     "genre": "Health and Fitness",
-    "genre_ukr": "Здоров'я і фітнес"
+    "genre_ukr": "Здоров'я і фітнес",
+    "category_id": "66f583cfb42e9426eae9c848"
   },
   {
     "genre": "Medical Literature",
-    "genre_ukr": "Медична література"
+    "genre_ukr": "Медична література",
+    "category_id": "66f583cfb42e9426eae9c849"
   },
   {
     "genre": "Law",
-    "genre_ukr": "Правознавство"
-  },
-  {
-    "genre": "Technical Literature",
-    "genre_ukr": "Технічна література"
+    "genre_ukr": "Правознавство",
+    "category_id": "66f583cfb42e9426eae9c849"
   },
   {
     "genre": "Information Technology",
-    "genre_ukr": "Інформаційні технології"
+    "genre_ukr": "Інформаційні технології",
+    "category_id": "66f583cfb42e9426eae9c849"
   }
 ]

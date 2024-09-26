@@ -26,6 +26,18 @@
     {
         "book_id": "664bd61648c3ece53e4d9a90",
         "quantity": 10
-    }     
+    },
+    {
+        "book_id": "664bd61648c3ece53e4d9a90",
+        "quantity": 7
+    } ,
+    {
+        "book_id": "664bd61648c3ece53e4d9a90",
+        "quantity": 8
+    }  ,
+    {
+        "book_id": "664bd61648c3ece53e4d9a90",
+        "quantity": 12
+    }       
 
 ]

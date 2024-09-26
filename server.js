@@ -5,10 +5,19 @@ import multer from "multer";
 import dotenv from "dotenv" ;
 dotenv.config({path: "./.env"});
 import { sortingFormFields } from "./services/formService.js";
-import data from "./data/data-script.js";
-// const importStorageData =  data.importStorageData;
-// const importGenreData =  data.importGenreData;
-const importAgesData = data.importAgesData;
+// import data from "./data/data-script.js";
+// const importCoversData = data.importCoverData;
+// const importGenreData = data.importGenreData;
+// const importLanguagesData = data.importLanguageData;
+// const importPublishersData = data.importPublisherData
+// const importCategotyData = data. importCategoryData
+// const importPrice = data.importPriceData
+// const importBookData = data.importBooksData
+// importBookData()
+
+
+
+
 
 // const uploadImageHandler = require("./utils/uploadImagesHandler.js")
 
@@ -28,7 +37,7 @@ app.listen(port, () => {
     console.log("app running")
 });
 
-// importAgesData()
+
 // const storage = multer.memoryStorage();
 // const upload = multer({ storage: storage });
 
