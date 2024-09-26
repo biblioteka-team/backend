@@ -85,10 +85,10 @@ export const getNewBook = async () => {
                   as: "language"} 
                 },
                 {$lookup: {
-                  from: "categories",
-                  localField: "category_id",
+                  from: "genres",
+                  localField: "genre_id",
                   foreignField: "_id",
-                  as: "category"} 
+                  as: "genre"} 
                 },
                 {$lookup: {
                   from: "prices",
@@ -96,14 +96,13 @@ export const getNewBook = async () => {
                   foreignField: "_id",
                   as: "price"} 
                 },
-                { $unset: [ "author_id", "publisher_id", "language_id", "category_id", "price_id", "__v" ] },
+                { $unset: [ "author_id", "publisher_id", "language_id", "genre_id", "price_id", "__v" ] },
                 {
                   $group: {
                     "_id" : "$_id",
                     "title": {"$first": "$title"},
                     "summary": {"$first": "$summary"},
                     "coverImageLink": {"$first": "$coverImageLink"},
-                    "isbn": {"$first": "$isbn"},
                     "publication_year": {"$first": "$publication_year"},
                     "type": {"$first": "$type"},
                     "condition": {"$first": "$condition"},
@@ -114,7 +113,7 @@ export const getNewBook = async () => {
                     "author": {"$first": "$author"},
                     "publisher": {"$first": "$publisher"},
                     "language": {"$first": "$language"},
-                    "category": {"$first": "$category"},
+                    "genre": {"$first": "$genre"},
                     "price": {"$first": "$price"}
                   }
                 }
@@ -135,8 +134,8 @@ export const getSalesBook = async () => {
               }}, {
                 $lookup: {
                   from: "books",
-                  localField: "price_id",
-                  foreignField: "_id",
+                  localField: "_id",
+                  foreignField: "price_id",
                   as: "book"}
               }, 
               {
@@ -164,10 +163,10 @@ export const getSalesBook = async () => {
                 as: "book.language"} 
               },
               {$lookup: {
-                from: "categories",
-                localField: "book.category_id",
+                from: "genres",
+                localField: "book.genre_id",
                 foreignField: "_id",
-                as: "book.category"} 
+                as: "book.genre"} 
               },
               {$lookup: {
                 from: "prices",
@@ -192,7 +191,7 @@ export const getSalesBook = async () => {
                   "author": {"$first": "$book.author"},
                   "publisher": {"$first": "$book.publisher"},
                   "language": {"$first": "$book.language"},
-                  "category": {"$first": "$book.category"},
+                  "genre": {"$first": "$book.genre"},
                   "price": {"$first": "$book.price"}
                 }}  
             ]),
@@ -227,10 +226,10 @@ export const getBestsellerBook = async () => {
                   as: "language"} 
                 },
                 {$lookup: {
-                  from: "categories",
-                  localField: "category_id",
+                  from: "genres",
+                  localField: "genre_id",
                   foreignField: "_id",
-                  as: "category"} 
+                  as: "genre"} 
                 },
                 {$lookup: {
                   from: "prices",
@@ -238,7 +237,7 @@ export const getBestsellerBook = async () => {
                   foreignField: "_id",
                   as: "price"} 
                 },
-                { $unset: [ "author_id", "publisher_id", "language_id", "category_id", "price_id", "__v" ] },
+                { $unset: [ "author_id", "publisher_id", "language_id", "genre_id", "price_id", "__v" ] },
                 {
                   $group: {
                     "_id" : "$_id",
@@ -256,7 +255,7 @@ export const getBestsellerBook = async () => {
                     "author": {"$first": "$author"},
                     "publisher": {"$first": "$publisher"},
                     "language": {"$first": "$language"},
-                    "category": {"$first": "$category"},
+                    "genre": {"$first": "$genre"},
                     "price": {"$first": "$price"}
                   }
                 }
