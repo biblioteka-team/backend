@@ -61,7 +61,7 @@ try{
     }
 };
 
-//test
+
 export const getNewBook = async () => {
     try {
         const [newBooksRequest] = await Promise.all([
