@@ -38,5 +38,6 @@ export const admin = new AdminJS({
     rootPath: "/api/admin", 
 });
 
+
 export const adminRouter = AdminJSExpress.buildRouter(admin);
 
