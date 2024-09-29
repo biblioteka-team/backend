@@ -10,6 +10,7 @@ import Category from "../models/categoryModel.js";
 import Storagedata from "../models/storagedataModel.js";
 import Cover from "../models/coverModel.js";
 import Age from "../models/ageModel.js";
+import Genre from "../models/genreModel.js";
 
 AdminJS.registerAdapter({ Database, Resource });
 
@@ -41,6 +42,9 @@ export const admin = new AdminJS({
     },
     {
       resource: Age,
+    },
+    {
+      resource: Genre,
     },
   ],
   rootPath: "/api/admin",
