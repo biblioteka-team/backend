@@ -3,6 +3,7 @@ import Category from "../models/categoryModel.js";
 import Book from "../models/bookModel.js";
 import Price from "../models/priceModel.js";
 import Language from "../models/languageModel.js";
+import Author from "../models/authorModel.js";
 
 export const recommendBook =  async (category, bookId) => {
 try{
@@ -269,7 +270,128 @@ export const getBestsellerBook = async () => {
     
 }
 
+export const searchBookByTitle = async(regex) => {
+  try{
+    const [bookByTitle] = await Promise.all([
+        Book.aggregate([
+          {$match: { $or: [{ title: regex }, { title_ukr: regex }]}},
+          {$lookup: {
+            from: "authors",
+            localField: "author_id",
+            foreignField: "_id",
+            as: "author"} 
+          },
+          {$lookup: {
+            from: "publishers",
+            localField: "publisher_id",
+            foreignField: "_id",
+            as: "publisher"} 
+          },
+          {$lookup: {
+            from: "languages",
+            localField: "language_id",
+            foreignField: "_id",
+            as: "language"} 
+          },
+          {$lookup: {
+            from: "genres",
+            localField: "genre_id",
+            foreignField: "_id",
+            as: "genre"} 
+          },
+          {$lookup: {
+            from: "prices",
+            localField: "price_id",
+            foreignField: "_id",
+            as: "price"} 
+          },
+          { $unset: [ "author_id", "publisher_id", "language_id", "genre_id", "price_id", "__v" ] },
+        ])
+   ])
+   return bookByTitle;
+  } catch(err) {
+    console.error(err);
+  }
+}
 
+export const searchBookByAuthor = async(regex) => {
+  try{
+    const [bookByAuthor] = await Promise.all([
+      await Author.aggregate([
+        {$match: { $or: [{ name: regex }, { surname: regex }, { name_ukr: regex }, { surname_ukr: regex }]}},
+        {$lookup: {
+          from: "books",
+          localField: "_id",
+          foreignField: "author_id",
+          as: "book",
+          } 
+        },
+        {
+          $unwind: {
+            path: "$book",
+            preserveNullAndEmptyArrays: true
+          }
+        },
+        {$lookup: {
+          from: "authors",
+          localField: "book.author_id",
+          foreignField: "_id",
+          as: "book.author"} 
+        },
+        {$lookup: {
+          from: "publishers",
+          localField: "book.publisher_id",
+          foreignField: "_id",
+          as: "book.publisher"} 
+        },
+        {$lookup: {
+          from: "languages",
+          localField: "book.language_id",
+          foreignField: "_id",
+          as: "book.language"} 
+        },
+        {$lookup: {
+          from: "genres",
+          localField: "book.genre_id",
+          foreignField: "_id",
+          as: "book.genre"} 
+        },
+        {$lookup: {
+          from: "prices",
+          localField: "book.price_id",
+          foreignField: "_id",
+          as: "book.price"} 
+        },
+        {
+          $group: {
+            "_id" : "$_id",
+            "title": {"$first": "$book.title"},
+            "summary": {"$first": "$book.summary"},
+            "coverImageLink": {"$first": "$book.coverImageLink"},
+            "isbn": {"$first": "$book.isbn"},
+            "publication_year": {"$first": "$book.publication_year"},
+            "type": {"$first": "$book.type"},
+            "condition": {"$first": "$book.condition"},
+            "title_ukr": {"$first": "$book.title_ukr"},
+            "summary_ukr": {"$first": "$book.summary_ukr"},
+            "coverImageLink_ukr":  {"$first": "$book.coverImageLink_ukr"},
+            "created": {"$first": "$book.created"},
+            "author": {"$first": "$book.author"},
+            "publisher": {"$first": "$book.publisher"},
+            "language": {"$first": "$book.language"},
+            "genre": {"$first": "$book.genre"},
+            "price": {"$first": "$book.price"}
+          }
+        }
+      ])
+    ])
+    return bookByAuthor;
+  } catch(err) {
+    console.error(err);
+  }
+}
+
+   
 
 export const getBooksByLanguage = async(langPreferences) => {
   try{

@@ -1,7 +1,7 @@
 import Book from "../models/bookModel.js";
 import Author from "../models/authorModel.js";
 import {catchAsync} from "../utils/catchAsync.js";
-import {recommendBook, getNewBook, getSalesBook, getBestsellerBook, getBooksByLanguage} from "../services/bookService.js";
+import {recommendBook, getNewBook, getSalesBook, getBestsellerBook, getBooksByLanguage, searchBookByTitle, searchBookByAuthor} from "../services/bookService.js";
 import { sortingFormFields } from "../services/formService.js";
 
 const getNewAndSalesAndBestsellerBooks = catchAsync(async (req, res, next) => {
@@ -46,112 +46,11 @@ const getBookbyId = catchAsync(async (req, res, next) => {
 
 const searchBookByTitleByAuthor = catchAsync(async (req, res, next) => {
   let regex = new RegExp([req.query.q],'i');
-  const searchedBookByTitle = await Book.aggregate([
-    {$match: { $or: [{ title: regex }, { title_ukr: regex }]}},
-    {$lookup: {
-      from: "authors",
-      localField: "author_id",
-      foreignField: "_id",
-      as: "author"} 
-    },
-    {$lookup: {
-      from: "publishers",
-      localField: "publisher_id",
-      foreignField: "_id",
-      as: "publisher"} 
-    },
-    {$lookup: {
-      from: "languages",
-      localField: "language_id",
-      foreignField: "_id",
-      as: "language"} 
-    },
-    {$lookup: {
-      from: "categories",
-      localField: "category_id",
-      foreignField: "_id",
-      as: "category"} 
-    },
-    {$lookup: {
-      from: "prices",
-      localField: "price_id",
-      foreignField: "_id",
-      as: "price"} 
-    },
-    { $unset: [ "author_id", "publisher_id", "language_id", "category_id", "price_id", "__v" ] },
-]);
 
+   const bookByTitle = await searchBookByTitle(regex);
+   const bookByAuthor = await searchBookByAuthor(regex);
 
-  const searchedBookByAuthor = await Author.aggregate([
-  {$match: { $or: [{ name: regex }, { surname: regex }, { name_ukr: regex }, { surname_ukr: regex }]}},
-  {$lookup: {
-    from: "books",
-    localField: "_id",
-    foreignField: "author_id",
-    as: "book",
-    } 
-  },
-  {
-    $unwind: {
-      path: "$book",
-      preserveNullAndEmptyArrays: true
-    }
-  },
-  {$lookup: {
-    from: "authors",
-    localField: "book.author_id",
-    foreignField: "_id",
-    as: "book.author"} 
-  },
-  {$lookup: {
-    from: "publishers",
-    localField: "book.publisher_id",
-    foreignField: "_id",
-    as: "book.publisher"} 
-  },
-  {$lookup: {
-    from: "languages",
-    localField: "book.language_id",
-    foreignField: "_id",
-    as: "book.language"} 
-  },
-  {$lookup: {
-    from: "categories",
-    localField: "book.category_id",
-    foreignField: "_id",
-    as: "book.category"} 
-  },
-  {$lookup: {
-    from: "prices",
-    localField: "book.price_id",
-    foreignField: "_id",
-    as: "book.price"} 
-  },
-  {
-    $group: {
-      "_id" : "$_id",
-      "title": {"$first": "$book.title"},
-      "summary": {"$first": "$book.summary"},
-      "coverImageLink": {"$first": "$book.coverImageLink"},
-      "isbn": {"$first": "$book.isbn"},
-      "publication_year": {"$first": "$book.publication_year"},
-      "type": {"$first": "$book.type"},
-      "condition": {"$first": "$book.condition"},
-      "title_ukr": {"$first": "$book.title_ukr"},
-      "summary_ukr": {"$first": "$book.summary_ukr"},
-      "coverImageLink_ukr":  {"$first": "$book.coverImageLink_ukr"},
-      "created": {"$first": "$book.created"},
-      "author": {"$first": "$book.author"},
-      "publisher": {"$first": "$book.publisher"},
-      "language": {"$first": "$book.language"},
-      "category": {"$first": "$book.category"},
-      "price": {"$first": "$book.price"}
-    }
-  }
-]);
-
-
-  const searchResult = searchedBookByTitle != 0 ? searchedBookByTitle : searchedBookByAuthor ;
+  const searchResult = bookByTitle != 0 ? bookByTitle : bookByAuthor;
 
   res.status(200).json({
     status: "success",
