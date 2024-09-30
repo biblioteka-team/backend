@@ -23,7 +23,7 @@ const corsOptions = {
           { "key": "Access-Control-Allow-Methods", "value": "GET,OPTIONS,PATCH,DELETE,POST,PUT" },
           { "key": "Access-Control-Allow-Headers", "value": "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version" }
         ],
-        origin: ["http://localhost:5173", "https://frontend-sigma-three-18.vercel.app/api"],
+        origin: ["http://localhost:5173", "https://biblioteka-db.netlify.app/"],
         optionsSuccessStatus: 200,
 };
 
