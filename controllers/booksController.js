@@ -30,12 +30,12 @@ const getNewAndSalesAndBestsellerBooks = catchAsync(async (req, res, next) => {
 
 const getBookbyId = catchAsync(async (req, res, next) => {
     const bookById = await Book.findById(req.params.id).populate("price_id").populate("author_id")
-    .populate("publisher_id").populate("language_id").populate("category_id"). populate("storage_id");
+    .populate("publisher_id").populate("language_id").populate("genre_id"). populate("storage_id");
 
-    const category = bookById.category_id;
+    const genre = bookById.genre_id;
     const bookId = req.params.id
     
-    const recommendation =  await recommendBook(category, bookId); 
+    const recommendation =  await recommendBook(genre, bookId); 
 
     res.status(200).json({
       status: "success",

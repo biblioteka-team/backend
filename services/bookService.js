@@ -4,16 +4,17 @@ import Book from "../models/bookModel.js";
 import Price from "../models/priceModel.js";
 import Language from "../models/languageModel.js";
 import Author from "../models/authorModel.js";
+import Genre from "../models/genreModel.js";
 
-export const recommendBook =  async (category, bookId) => {
+export const recommendBook =  async (genre, bookId) => {
 try{
   const [recommendedBookByCategory] = await Promise.all([
-        Category.aggregate([
-                {$match: {_id: category[0]._id }},
+        Genre.aggregate([
+                {$match: {_id: genre[0]._id }},
                 {$lookup: {
                     from: "books",
                     localField: "_id",
-                    foreignField: "category_id",
+                    foreignField: "genre_id",
                     as: "book",   
                     }
                 },
@@ -30,10 +31,10 @@ try{
                     as: "book.author"} 
                 },      
                 {$lookup: {
-                    from: "categories",
-                    localField: "book.category_id",
+                    from: "genres",
+                    localField: "book.genre_id",
                     foreignField: "_id",
-                    as: "book.category"} 
+                    as: "book.genre"} 
                 },
                 {$lookup: {
                     from: "prices",
