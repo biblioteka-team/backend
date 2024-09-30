@@ -69,7 +69,6 @@ const renameGenreFields =  async () => {
               return el
     
             });
-            // console.log("cat", category)
             return category;
           });
           return renameKeys;
@@ -94,9 +93,9 @@ export const sortingFormFields = async () => {
             const modifiedLanguage = {
                 "categoryName__ukr": "Мова",
                 "categoryName__eng": "Language",
-                "filters": languageFields};
-            
-            // const categoryFields = await Category.find().populate("genre_id");;
+                "filters": languageFields
+            };
+
             const categoryFields = await renameGenreFields();
             const modifiedCategory = {
                 "categoryName__ukr": "Жанр",
