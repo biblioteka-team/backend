@@ -65,7 +65,6 @@ const renameGenreFields =  async () => {
               el.text_ukr = el.genre_ukr;
               delete el.genre;
               delete el.genre_ukr;
-              console.log("ge", el)
               return el
     
             });

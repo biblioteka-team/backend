@@ -1,7 +1,8 @@
 import Book from "../models/bookModel.js";
 import Author from "../models/authorModel.js";
 import {catchAsync} from "../utils/catchAsync.js";
-import {recommendBook, getNewBook, getSalesBook, getBestsellerBook, getBooksByLanguage, searchBookByTitle, searchBookByAuthor} from "../services/bookService.js";
+import {recommendBook, getNewBook, getSalesBook, getBestsellerBook, getBooksByLanguage, getBooksByCover, getBooksByAge, getBooksByGenre,
+        searchBookByPublisher,  searchBookByTitle, searchBookByAuthor, getBooksByPriceRange} from "../services/bookService.js";
 import { sortingFormFields } from "../services/formService.js";
 
 const getNewAndSalesAndBestsellerBooks = catchAsync(async (req, res, next) => {
@@ -62,36 +63,51 @@ const searchBookByTitleByAuthor = catchAsync(async (req, res, next) => {
 });
 
 const getSortedBooksList = catchAsync(async (req, res, next) => {
-  // const match = {};
-  //  if(req.query.completed) {
-  //           match.completed = req.query.completed  === true
-  //     }
-  
   const fields = await sortingFormFields();
+  let authorPreferences = req.query.author
+  let publisherPreferences = req.query.publisher;
   let preferences = req.query.id;
   let langPreferences = req.query.langId;
-  // let coverPreferences = req.query.cover;
-  // langPreferences.toString();
-  // overPreferences.toString();
-  console.log(langPreferences)
-
+  let coverPreferences = req.query.coverId;
+  let agePreferences = req.query.ageId;
+  let genrePreferences = req.query.genreId;
+  let lowPrice = req.query.low;
+  let highPrice = req.query.high;
   let requestForSortedBooks = {};
 
         if(preferences === "001"){
           requestForSortedBooks.preferences = await getNewBook();
         }
-        if (preferences === "002") {
+        else if (preferences === "002") {
           requestForSortedBooks.preferences = await getSalesBook();
         }
-        if (preferences === "003") {
+        else if (preferences === "003") {
           requestForSortedBooks.preferences = await getBestsellerBook();
         }
-        if(langPreferences) {
+        else if(langPreferences) {
           requestForSortedBooks.preferencesByLanguage = await getBooksByLanguage(langPreferences);
         }
-        // if(coverPreferences) {
-        //   requestForSortedBooks.preferencesByCover = await getBooksByCover(coverPreferences);
-        // }
+        else if(coverPreferences) {
+          requestForSortedBooks.preferencesByCover = await getBooksByCover(coverPreferences);
+        }
+        else if(agePreferences) {
+          requestForSortedBooks.preferencesByAge = await getBooksByAge(agePreferences);
+        }
+        else if(genrePreferences) {
+          requestForSortedBooks.preferencesByGenre = await getBooksByGenre(genrePreferences);
+        }
+        else if(authorPreferences) {
+          requestForSortedBooks.preferencesByAuthor = await searchBookByAuthor(authorPreferences);
+        }
+        else if(publisherPreferences) {
+          requestForSortedBooks.preferencesByPublisher = await searchBookByPublisher(publisherPreferences);
+        } 
+        else if(lowPrice && highPrice){
+          requestForSortedBooks.preferencesByPriceRange = await getBooksByPriceRange(lowPrice, highPrice);
+        }
+        else {
+          requestForSortedBooks.preferences = await getBestsellerBook();
+        }
 
   res.status(200).json({
     status: "success",
@@ -99,8 +115,12 @@ const getSortedBooksList = catchAsync(async (req, res, next) => {
       fields: fields,
       sortedBooksPreferences:  requestForSortedBooks.preferences,
       booksByLanguage: requestForSortedBooks.preferencesByLanguage,
-      // booksByCover:  requestForSortedBooks.preferencesByCover
-
+      booksByCover:  requestForSortedBooks.preferencesByCover,
+      booksByAge: requestForSortedBooks.preferencesByAge,
+      booksByGenre: requestForSortedBooks.preferencesByGenre,
+      booksByAuthor: requestForSortedBooks.preferencesByAuthor,
+      booksByPublisher: requestForSortedBooks.preferencesByPublisher,
+      booksByPriceRange: requestForSortedBooks.preferencesByPriceRange
     },
   })
 });
