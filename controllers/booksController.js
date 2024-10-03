@@ -78,34 +78,36 @@ const getSortedBooksList = catchAsync(async (req, res, next) => {
         if(preferences === "001"){
           requestForSortedBooks.preferences = await getNewBook();
         }
-        else if (preferences === "002") {
+        if (preferences === "002") {
           requestForSortedBooks.preferences = await getSalesBook();
         }
-        else if (preferences === "003") {
+        if (preferences === "003") {
           requestForSortedBooks.preferences = await getBestsellerBook();
         }
-        else if(langPreferences) {
+       if(langPreferences) {
           requestForSortedBooks.preferencesByLanguage = await getBooksByLanguage(langPreferences);
         }
-        else if(coverPreferences) {
+        if(coverPreferences) {
           requestForSortedBooks.preferencesByCover = await getBooksByCover(coverPreferences);
         }
-        else if(agePreferences) {
+       if(agePreferences) {
           requestForSortedBooks.preferencesByAge = await getBooksByAge(agePreferences);
         }
-        else if(genrePreferences) {
+         if(genrePreferences) {
           requestForSortedBooks.preferencesByGenre = await getBooksByGenre(genrePreferences);
         }
-        else if(authorPreferences) {
+        if(authorPreferences) {
           requestForSortedBooks.preferencesByAuthor = await searchBookByAuthor(authorPreferences);
         }
-        else if(publisherPreferences) {
+         if(publisherPreferences) {
           requestForSortedBooks.preferencesByPublisher = await searchBookByPublisher(publisherPreferences);
         } 
-        else if(lowPrice && highPrice){
+        if(lowPrice && highPrice){
           requestForSortedBooks.preferencesByPriceRange = await getBooksByPriceRange(lowPrice, highPrice);
         }
-        else {
+        if(!preferences && !agePreferences && !authorPreferences && !lowPrice && !highPrice && !langPreferences && !coverPreferences
+          && !genrePreferences && !publisherPreferences
+        ) {
           requestForSortedBooks.preferences = await getBestsellerBook();
         }
 
