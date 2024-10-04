@@ -19,10 +19,8 @@ import session from "express-session";
 import bcrypt from "bcryptjs";
 import connectMongo from "connect-mongo";
 
-// Реєстрація адаптера для MongoDB у AdminJS
 AdminJS.registerAdapter({ Database, Resource });
 
-// Створення AdminJS
 export const admin = new AdminJS({
   resources: [
     {
