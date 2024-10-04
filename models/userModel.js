@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import validator from "validator";
 
 const userSchema = new mongoose.Schema({
     name: {
@@ -13,20 +14,24 @@ const userSchema = new mongoose.Schema({
     },
     email: {
         type: String,
-        required: [true, "A user must have a email"],
-        validate: [isEmail, 'invalid email'],
+        required: [true, "A user must have an email"],
+        validate: {
+            validator: validator.isEmail,
+            message: 'Invalid email format'
+        },
         unique: true,
         trim: true,
     },
     password: {
         type: String,
-        required: [true, "A user must have a email"],
+        required: [true, "A user must have a password"],
         trim: true,
     },
     role: {
         type: String,
+        enum: ["user", "admin"],
+        default: "user",
         required: [true, "A user must have a role"],
-        default: 1,
         trim: true,
     }
 });

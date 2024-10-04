@@ -1,3 +1,6 @@
+import dotenv from "dotenv";
+dotenv.config();
+
 import AdminJS from "adminjs";
 import AdminJSExpress from "@adminjs/express";
 import { Database, Resource } from "@adminjs/mongoose";
@@ -11,6 +14,10 @@ import Storagedata from "../models/storagedataModel.js";
 import Cover from "../models/coverModel.js";
 import Age from "../models/ageModel.js";
 import Genre from "../models/genreModel.js";
+import User from "../models/userModel.js";
+import session from "express-session";
+import bcrypt from "bcryptjs";
+import connectMongo from "connect-mongo";
 
 AdminJS.registerAdapter({ Database, Resource });
 
@@ -46,8 +53,48 @@ export const admin = new AdminJS({
     {
       resource: Genre,
     },
+    {
+      resource: User,
+    },
   ],
-  rootPath: "/api/admin",
+  rootPath: "/admin",
 });
 
-export const adminRouter = AdminJSExpress.buildRouter(admin);
+const db = process.env.DATABASE.replace("<PASSWORD>", process.env.PASSWORD);
+
+const sessionStore = connectMongo.create({
+  mongoUrl: db,
+  collectionName: "sessions",
+  ttl: 14 * 24 * 60 * 60,
+});
+
+const authenticate = async (email, password) => {
+  const user = await User.findOne({ email });
+  if (user) {
+    const matched = password === user.password;
+    if (matched) {
+      return user;
+    }
+  }
+  return null;
+};
+
+export const adminRouter = AdminJSExpress.buildAuthenticatedRouter(
+  admin,
+  {
+    authenticate,
+    cookieName: "adminjs",
+    cookiePassword: process.env.COOKIE_SECRET || "sessionsecret",
+  },
+  null,
+  {
+    store: sessionStore,
+    resave: false,
+    saveUninitialized: true,
+    secret: process.env.SESSION_SECRET || "sessionsecret",
+    cookie: {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+    },
+  }
+);
