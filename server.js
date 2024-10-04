@@ -1,9 +1,10 @@
+import dotenv from "dotenv";
+dotenv.config({ path: "./.env" });
 import mongoose from "mongoose";
-import app  from "./app.js";
+import app from "./app.js";
 import cors from "cors";
 import multer from "multer";
-import dotenv from "dotenv" ;
-dotenv.config({path: "./.env"});
+
 // import data from "./data/data-script.js";
 // const importCoversData = data.importCoverData;
 // const importGenreData = data.importGenreData;
@@ -14,28 +15,20 @@ dotenv.config({path: "./.env"});
 // const importBookData = data.importBooksData
 // importBookData()
 
-
-
-
-
 // const uploadImageHandler = require("./utils/uploadImagesHandler.js")
 
-const DB = process.env.DATABASE.replace(
-    "<PASSWORD>",
-    process.env.PASSWORD
-);
+const DB = process.env.DATABASE.replace("<PASSWORD>", process.env.PASSWORD);
 
 //connect to Mongo DB
 mongoose.connect(DB).then(() => {
-    console.log("DB connected");
+  console.log("DB connected");
 });
 
 const port = process.env.PORT || 8080;
 
 app.listen(port, () => {
-    console.log("app running")
+  console.log("app running");
 });
-
 
 // const storage = multer.memoryStorage();
 // const upload = multer({ storage: storage });
@@ -48,7 +41,5 @@ app.listen(port, () => {
 // }).catch(error => {
 //   console.error('Upload failed:', error);
 // });
-
-
 
 // updateData();
