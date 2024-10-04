@@ -576,7 +576,7 @@ export const getBooksByGenre = async(genrePreferences) => {
    const [sortedBooksByGenre] = await Promise.all([
      Book.find({genre_id: genrePreferences}).populate("price_id").populate("author_id")
      .populate("publisher_id").populate("language_id").populate("genre_id"). populate("storage_id")
-   ])
+])
    return sortedBooksByGenre;
   }catch(err) {
      console.log(err);
@@ -584,8 +584,6 @@ export const getBooksByGenre = async(genrePreferences) => {
  }
 
 export const getBooksByPriceRange = async(lowPrice, highPrice) => {
-  console.log(lowPrice)
-  console.log(highPrice)
   try{
     const [sortedBooksByPriceRange] = await Promise.all([
     Price.aggregate([{$match: {

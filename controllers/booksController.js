@@ -66,7 +66,9 @@ const getSortedBooksList = catchAsync(async (req, res, next) => {
   const fields = await sortingFormFields();
   let authorPreferences = req.query.author
   let publisherPreferences = req.query.publisher;
-  let preferences = req.query.id;
+  let newBooksPreferences = req.query.newBook;
+  let salesBooksPreferences = req.query.salesBook;
+  let bestsellersBooksPreferences = req.query.bestsellersBook;
   let langPreferences = req.query.langId;
   let coverPreferences = req.query.coverId;
   let agePreferences = req.query.ageId;
@@ -75,14 +77,14 @@ const getSortedBooksList = catchAsync(async (req, res, next) => {
   let highPrice = req.query.high;
   let requestForSortedBooks = {};
 
-        if(preferences === "001"){
-          requestForSortedBooks.preferences = await getNewBook();
+        if(newBooksPreferences === "001"){
+          requestForSortedBooks.preferencesByNewBooks = await getNewBook();
         }
-        if (preferences === "002") {
-          requestForSortedBooks.preferences = await getSalesBook();
+        if (salesBooksPreferences === "002") {
+          requestForSortedBooks.preferencesBySales = await getSalesBook();
         }
-        if (preferences === "003") {
-          requestForSortedBooks.preferences = await getBestsellerBook();
+        if (bestsellersBooksPreferences === "003") {
+          requestForSortedBooks.preferencesByBestsellers = await getBestsellerBook();
         }
        if(langPreferences) {
           requestForSortedBooks.preferencesByLanguage = await getBooksByLanguage(langPreferences);
@@ -105,17 +107,19 @@ const getSortedBooksList = catchAsync(async (req, res, next) => {
         if(lowPrice && highPrice){
           requestForSortedBooks.preferencesByPriceRange = await getBooksByPriceRange(lowPrice, highPrice);
         }
-        if(!preferences && !agePreferences && !authorPreferences && !lowPrice && !highPrice && !langPreferences && !coverPreferences
+        if(!newBooksPreferences && !salesBooksPreferences && bestsellersBooksPreferences && !agePreferences && !authorPreferences && !lowPrice && !highPrice && !langPreferences && !coverPreferences
           && !genrePreferences && !publisherPreferences
         ) {
-          requestForSortedBooks.preferences = await getBestsellerBook();
+          requestForSortedBooks.preferencesByBestsellers = await getBestsellerBook();
         }
 
   res.status(200).json({
     status: "success",
     data: {
       fields: fields,
-      sortedBooksPreferences:  requestForSortedBooks.preferences,
+      newBooks:  requestForSortedBooks.preferencesByNewBooks,
+      salesBooks: requestForSortedBooks.preferencesBySales,
+      bestsellersBook: requestForSortedBooks.preferencesByBestsellers,
       booksByLanguage: requestForSortedBooks.preferencesByLanguage,
       booksByCover:  requestForSortedBooks.preferencesByCover,
       booksByAge: requestForSortedBooks.preferencesByAge,

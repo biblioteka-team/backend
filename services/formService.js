@@ -82,9 +82,9 @@ export const sortingFormFields = async () => {
                 "categoryName__ukr": "Фільтри",
                 "categoryName__eng": "Filters",
                 "filters": [
-                    { "text": "New Arrivals", "text_ukr": "Новинки", "id": "001" },
-                    { "text": "Promotions", "text_ukr": "Акції", "id": "002" },
-                    { "text": "Bestsellers", "text_ukr": "Бестселери", "id": "003" }
+                    { "text": "New Arrivals", "text_ukr": "Новинки", "_id": "001" },
+                    { "text": "Promotions", "text_ukr": "Акції", "_id": "002" },
+                    { "text": "Bestsellers", "text_ukr": "Бестселери", "_id": "003" }
                 ],
             };
 
