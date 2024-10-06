@@ -94,7 +94,7 @@ export const adminRouter = AdminJSExpress.buildAuthenticatedRouter(
     secret: process.env.SESSION_SECRET || "sessionsecret",
     cookie: {
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
+      secure: false,
     },
   }
 );
