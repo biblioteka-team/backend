@@ -23,7 +23,6 @@ const sendConfirmationEmail = async (email, token) => {
 
   const confirmationUrl = `${process.env.BACKEND_URL}/api/auth/confirm-email?token=${token}`;
 
-
   try {
     await transporter.sendMail({
       from: process.env.EMAIL_USERNAME,
@@ -33,7 +32,7 @@ const sendConfirmationEmail = async (email, token) => {
     });
   } catch (error) {
     console.log(error);
-    
+
     throw new Error(error);
   }
 };
@@ -69,7 +68,7 @@ export const registerService = async (userData) => {
   const token = generateEmailConfirmationToken(newUser.email);
   await sendConfirmationEmail(newUser.email, token);
 
-  return { status: 201 };
+  return { status: 201, errors: [{ msg: AppMessages.confirmEmail }] };
 };
 
 export const confirmEmail = async (token) => {
