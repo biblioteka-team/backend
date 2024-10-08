@@ -2,38 +2,42 @@ import mongoose from "mongoose";
 import validator from "validator";
 
 const userSchema = new mongoose.Schema({
-    name: {
-        type: String,
-        required: [true, "A user must have a name"],
-        trim: true,
+  name: {
+    type: String,
+    required: [true, "A user must have a name"],
+    trim: true,
+  },
+  surname: {
+    type: String,
+    required: [true, "A user must have a surname"],
+    trim: true,
+  },
+  email: {
+    type: String,
+    required: [true, "A user must have an email"],
+    validate: {
+      validator: validator.isEmail,
+      message: "Invalid email format",
     },
-    surname: {
-        type: String,
-        required: [true, "A user must have a surname"],
-        trim: true,
-    },
-    email: {
-        type: String,
-        required: [true, "A user must have an email"],
-        validate: {
-            validator: validator.isEmail,
-            message: 'Invalid email format'
-        },
-        unique: true,
-        trim: true,
-    },
-    password: {
-        type: String,
-        required: [true, "A user must have a password"],
-        trim: true,
-    },
-    role: {
-        type: String,
-        enum: ["user", "admin"],
-        default: "user",
-        required: [true, "A user must have a role"],
-        trim: true,
-    }
+    unique: true,
+    trim: true,
+  },
+  password: {
+    type: String,
+    required: [true, "A user must have a password"],
+    trim: true,
+  },
+  role: {
+    type: String,
+    enum: ["user", "admin"],
+    default: "user",
+    required: [true, "A user must have a role"],
+    trim: true,
+  },
+  isConfirmed: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 const User = mongoose.model("User", userSchema);
