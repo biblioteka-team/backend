@@ -1,12 +1,29 @@
 /**
  * @swagger
+ * components:
+ *   securitySchemes:
+ *     bearerAuth: # Name of the security scheme
+ *       type: http
+ *       scheme: bearer
+ *       bearerFormat: JWT # Format of the token
+ *
  * /check-user:
  *   get:
  *     summary: Check if the user is logged in
  *     tags:
  *       - Auth
  *     security:
- *       - bearerAuth: []  // Убедитесь, что этот security schema определен в Swagger
+ *       - bearerAuth: []  # Apply the security scheme
+ *     parameters:
+ *       - name: Authorization
+ *         in: header
+ *         required: true
+ *         description: |
+ *           Bearer Token for authorization.
+ *           Example: "Bearer your_token"
+ *         schema:
+ *           type: string
+ *           example: "Bearer your_token"
  *     responses:
  *       200:
  *         description: User is authenticated
