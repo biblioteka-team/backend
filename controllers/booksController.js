@@ -65,7 +65,7 @@ const searchBookByTitleByAuthor = catchAsync(async (req, res, next) => {
 const getSortedBooksList = catchAsync(async (req, res, next) => {
   const fields = await sortingFormFields();
   let authorPreferences = req.query.author
-  let publisherPreferences = req.query.publisher;
+  let publisherPreferences = req.query.publisher; 
   let newBooksPreferences = req.query.newBook;
   let salesBooksPreferences = req.query.salesBook;
   let bestsellersBooksPreferences = req.query.bestsellersBook;

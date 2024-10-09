@@ -6,6 +6,7 @@ import jwt from "jsonwebtoken";
 import User from "../models/userModel.js";
 import AppErrors from "../constants/errors.js";
 import AppMessages from "../constants/messages.js";
+import bcrypt from "bcryptjs";
 
 const checkUniqueEmail = async (email) => {
   const user = await User.findOne({ email });
@@ -57,7 +58,7 @@ export const registerService = async (userData) => {
       errors: [{ msg: AppErrors.conflictEmail }],
     };
   }
-  userData.password = generateToken(userData);
+  userData.password = await bcrypt.hash(userData.password, 10);
 
   const newUser = new User({
     ...userData,
@@ -96,4 +97,66 @@ export const confirmEmail = async (token) => {
     status: 201,
     errors: [{ msg: AppMessages.emailConfirmedSuccess }],
   };
+};
+
+export const decodeToken = async (request) => {
+  try {
+    const authHeader = request.headers.authorization;
+    const token = authHeader.split(" ")[1];
+
+    return jwt.decode(token);
+  } catch (error) {
+    throw new Error(AppErrors.userNotFound);
+  }
+};
+
+export const loginUser = async ({ password, email }) => {
+  const existUser = await User.findOne({ email });
+
+  if (!existUser) {
+    return {
+      status: 404,
+      errors: [{ msg: AppError.userNotFound }],
+    };
+  }
+
+  if (!existUser.isConfirmed) {
+    return {
+      status: 403,
+      errors: [{ msg: AppError.emailNotConfirmed }],
+    };
+  }
+
+  const validatePassword = await bcrypt.compare(password, existUser.password);
+
+  if (!validatePassword) {
+    return {
+      status: 401,
+      errors: [{ msg: AppError.unauthorized }],
+    };
+  }
+
+  const token = await generateToken(existUser);
+
+  return {
+    status: 201,
+    token,
+  };
+};
+
+export const getUserByToken = async (request) => {
+  try {
+    const decoded = await decodeToken(request);
+
+    console.log(decoded);
+
+    const user = await User.findOne({ _id: decoded.payload._id });
+
+    return {
+      status: 201,
+      user,
+    };
+  } catch (error) {
+    throw new Error(AppError.invalidToken);
+  }
 };

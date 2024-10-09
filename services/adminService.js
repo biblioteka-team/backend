@@ -55,6 +55,39 @@ export const admin = new AdminJS({
     },
     {
       resource: User,
+      options: {
+        properties: {
+          password: {
+            isVisible: { list: false, edit: true, show: false, filter: false },
+          },
+        },
+        actions: {
+          new: {
+            before: async (request) => {
+              if (request.payload.password) {
+                request.payload.password = await bcrypt.hash(
+                  request.payload.password,
+                  10
+                );
+              }
+              return request;
+            },
+          },
+          edit: {
+            before: async (request) => {
+              if (request.payload.password) {
+                request.payload.password = await bcrypt.hash(
+                  request.payload.password,
+                  10
+                );
+              } else {
+                delete request.payload.password;
+              }
+              return request;
+            },
+          },
+        },
+      },
     },
   ],
   rootPath: "/admin",
@@ -71,7 +104,7 @@ const sessionStore = connectMongo.create({
 const authenticate = async (email, password) => {
   const user = await User.findOne({ email });
   if (user) {
-    const matched = password === user.password;
+    const matched = await bcrypt.compare(password, user.password);
     if (matched) {
       return user;
     }
