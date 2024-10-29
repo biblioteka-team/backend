@@ -67,7 +67,7 @@ app.use(admin.options.rootPath, adminRouter);
 //test
 app.use(express.json());
 
-app.use("/api", bookRouter);
+app.use("/", bookRouter);
 app.use("/", authRouter);
 
 export default app;
