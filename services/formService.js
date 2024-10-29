@@ -3,6 +3,28 @@ import Category from "../models/categoryModel.js";
 import Age from "../models/ageModel.js";
 import Cover from "../models/coverModel.js";
 
+const renameAuthorFields =  async () => {
+    try {
+        const authors = await Author.find().populate("author_id");
+        const renameKeys = authors.map(author => {
+              author.genre_id = author.author_id.map(el => {    
+              el.text = `${el.name} ${el.surname}`;
+              el.text_ukr = `${el.name_urk} ${el.surname_ukr}`;
+              delete el.name;
+              delete el.surname;
+              delete el.name_ukr;
+              delete el.surname_ukr;
+              return el
+    
+            });
+            return author;
+          });
+          return renameKeys;
+      } catch (err) {
+        console.log(err);
+      } 
+}
+
 const renameLanguageFields = async () => {
     try {
         const language = await Language.find();
@@ -88,6 +110,13 @@ export const sortingFormFields = async () => {
                 ],
             };
 
+            const authorFields = await renameAuthorFields()
+            const modifiedAuthor = {
+                "categoryName__ukr": "Автор",
+                "categoryName__eng": "Author",
+                "filters": authorFields
+            };
+
             const languageFields = await renameLanguageFields()
             const modifiedLanguage = {
                 "categoryName__ukr": "Мова",
@@ -116,7 +145,7 @@ export const sortingFormFields = async () => {
                 "filters": coverFields
             }
         
-            const data =  [filters, modifiedLanguage, modifiedCategory, modifiedAge, modifiedCover];
+            const data =  [filters, modifiedAuthor, modifiedLanguage, modifiedCategory, modifiedAge, modifiedCover];
             return data;
     } catch (error) {
         next(error);  // Passes any errors to the global error handler
