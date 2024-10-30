@@ -12,7 +12,7 @@ const renameAuthorFields =  async () => {
                 _id: item._id,
 	    	__v: item.__v,
                 text: `${item.name} ${item.surname}`,
-                text_ukr: `${item.name_urk} ${item.surname_ukr}`,
+                text_ukr: `${item.name_ukr} ${item.surname_ukr}`,
             };
         });
         return renameKeys;
