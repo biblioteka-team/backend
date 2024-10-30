@@ -6,19 +6,14 @@ import Author from "../models/authorModel.js";
 
 const renameAuthorFields =  async () => {
     try {
-        const authors = await Author.find().populate("author_id");
-        const renameKeys = authors.map(author => {
-            author.author_id = author.author_id.map(el => {
-                el.text = `${el.name} ${el.surname}`;
-                el.text_ukr = `${el.name_urk} ${el.surname_ukr}`;
-                delete el.name;
-                delete el.surname;
-                delete el.name_ukr;
-                delete el.surname_ukr;
-
-                return el
-            });
-            return author;
+    	const authors = await Author.find();
+        const renameKeys = authors.map(item => {
+            return {
+                _id: item._id,
+	    	__v: item.__v,
+                text: `${item.name} ${item.surname}`,
+                text_ukr: `${item.name_urk} ${item.surname_ukr}`,
+            };
         });
         return renameKeys;
     } catch (err) {
@@ -36,7 +31,7 @@ const renameLanguageFields = async () => {
                 __v: item.__v,
                 text_ukr: item.language_ukr
             };
-            });
+        });
         return renameKeys
     } catch (err) {
         console.log(err);
