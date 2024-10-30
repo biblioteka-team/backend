@@ -2,27 +2,28 @@ import Language from "../models/languageModel.js";
 import Category from "../models/categoryModel.js";
 import Age from "../models/ageModel.js";
 import Cover from "../models/coverModel.js";
+import Author from "../models/authorModel.js";
 
 const renameAuthorFields =  async () => {
     try {
         const authors = await Author.find().populate("author_id");
         const renameKeys = authors.map(author => {
-              author.genre_id = author.author_id.map(el => {    
-              el.text = `${el.name} ${el.surname}`;
-              el.text_ukr = `${el.name_urk} ${el.surname_ukr}`;
-              delete el.name;
-              delete el.surname;
-              delete el.name_ukr;
-              delete el.surname_ukr;
-              return el
-    
+            author.author_id = author.author_id.map(el => {
+                el.text = `${el.name} ${el.surname}`;
+                el.text_ukr = `${el.name_urk} ${el.surname_ukr}`;
+                delete el.name;
+                delete el.surname;
+                delete el.name_ukr;
+                delete el.surname_ukr;
+
+                return el
             });
             return author;
-          });
-          return renameKeys;
-      } catch (err) {
+        });
+        return renameKeys;
+    } catch (err) {
         console.log(err);
-      } 
+    } 
 }
 
 const renameLanguageFields = async () => {
@@ -37,10 +38,9 @@ const renameLanguageFields = async () => {
             };
             });
         return renameKeys
-      } catch (err) {
+    } catch (err) {
         console.log(err);
-      }
-    
+    }
 }
 
 const renameAgeFields = async () => {
