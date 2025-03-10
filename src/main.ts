@@ -17,7 +17,7 @@ async function bootstrap() {
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
   });
-  //config for swagger
+ 
   const config = new DocumentBuilder()
     .setTitle('BIBLIOTEKA API')
     .setDescription('The API documentation for the BIBLIOTEKA')
