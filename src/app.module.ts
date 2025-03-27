@@ -3,6 +3,8 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from './db/mongoose.module';
+import { AdminModule } from './admin/admin.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -10,6 +12,8 @@ import { MongooseModule } from './db/mongoose.module';
       isGlobal: true,
     }),
     MongooseModule,
+    AdminModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
